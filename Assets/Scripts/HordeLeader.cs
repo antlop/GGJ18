@@ -48,6 +48,8 @@ public class HordeLeader : MonoBehaviour {
 		Debug.Log ("Collide");
 		if (other.gameObject.tag == "NotInfected") {
 			newInfected (other.gameObject);
+
+			GetComponentInChildren<AudioSource> ().Play ();
 		}
 
 	}
