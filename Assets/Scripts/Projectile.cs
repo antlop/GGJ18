@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float Speed = 2f;
+    public float Speed = 20.0f;
 
     private Rigidbody2D _rigidbody;
 
     public void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _rigidbody.velocity = new Vector2(Speed, 0);
+       // _rigidbody.velocity = new Vector2(Speed, 0);
+		Debug.Log(transform.forward);
     }
 
     public void OnTriggerEnter(Collider collider)
@@ -25,6 +26,7 @@ public class Projectile : MonoBehaviour
 
     public void FixedUpdate()
     {
+		Debug.Log ("update");
         _rigidbody.AddForce(transform.forward * Speed);
         //_rigidbody.velocity = new Vector2(Speed, 0);
     }
