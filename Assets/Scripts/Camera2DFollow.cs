@@ -7,7 +7,6 @@ public class Camera2DFollow : MonoBehaviour {
     public string TagNameToFollow = "Player";
     public float Damping = 0.5f;
     public Transform StartOfLevel;
-    public Transform EndOfLevel;
     public Transform TopOfLevel;
     public Transform BottomOfLevel;
 
@@ -15,7 +14,6 @@ public class Camera2DFollow : MonoBehaviour {
     private int _targetLength;
     private Vector3 _currentVelocity;
     private float _startOfLevelX;
-    private float _endOfLevelX;
     private float _topOfLevelY;
     private float _bottomOfLevelY;
 
@@ -23,7 +21,6 @@ public class Camera2DFollow : MonoBehaviour {
     void Start()
     {
         _startOfLevelX = StartOfLevel.position.x;
-        _endOfLevelX = EndOfLevel.position.x;
         _topOfLevelY = TopOfLevel.position.y;
         _bottomOfLevelY = BottomOfLevel.position.y;
         LookForTargets();
@@ -67,7 +64,7 @@ public class Camera2DFollow : MonoBehaviour {
 
         var currentPosition = transform.position;
         var distanceBetweenPlayers = maxX - minX;
-        var newX = Mathf.Clamp(minX + (distanceBetweenPlayers / 2f), _startOfLevelX, _endOfLevelX);
+        var newX = Mathf.Clamp(minX + (distanceBetweenPlayers / 2f), _startOfLevelX, float.MaxValue);
         var newY = Mathf.Clamp(minY + (distanceBetweenPlayers / 2f), _bottomOfLevelY, _topOfLevelY);
 
         var targetPosition = new Vector3(newX, newY, currentPosition.z);
