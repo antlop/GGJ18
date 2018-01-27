@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		RecordInputs ();
 		// UpdateVelocity ();
-		//ApplyDrag ();
-		//UpdatePosition ();
+		// ApplyDrag ();
+		// UpdatePosition ();
 	}
 
 	void FixedUpdate() {
