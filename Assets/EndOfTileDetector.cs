@@ -5,6 +5,7 @@ using UnityEngine;
 public class EndOfTileDetector : MonoBehaviour {
 
 	public GameObject tileGenerator;
+	bool playerEnteredBefore = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,9 +22,8 @@ public class EndOfTileDetector : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		Debug.Log ("Other thing entered tile trigger!");
-		if (other.tag == "Player") {
-			Debug.Log ("Player entered tile trigger!");
+		if (other.tag == "Player" && !playerEnteredBefore) {
+			playerEnteredBefore = true;
 			tileGenerator.GetComponent<EndlessTileGenerator> ().PlayerReachedEndOfOldestTileCallback ();
 		}
 	}
