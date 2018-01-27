@@ -10,6 +10,13 @@ public class PlayerController : MonoBehaviour {
 	public float drag;
 	// public Vector2 acceleration;
 
+	// To be able to get inputs in Update() and apply them 
+	// in FixedUpdate() to get rid of jittering on collision
+	bool pressingUp;
+	bool pressingDown;
+	bool pressingLeft;
+	bool pressingRight;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -17,9 +24,57 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		UpdateVelocity ();
+		RecordInputs ();
+		// UpdateVelocity ();
+		//ApplyDrag ();
+		//UpdatePosition ();
+	}
+
+	void FixedUpdate() {
+		UpdateVelocityWithRecordedInput ();
 		ApplyDrag ();
-		UpdatePosition ();
+		transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (velocity.x, velocity.y);
+	}
+
+	void RecordInputs() {
+		pressingUp = false;
+		pressingDown = false;
+		pressingLeft = false;
+		pressingRight = false;
+		if (Input.GetKey ("up") || Input.GetKey("w")) {
+			pressingUp = true;
+		}
+		if (Input.GetKey ("down") || Input.GetKey("s")) {
+			pressingDown = true;
+		}
+		if (Input.GetKey ("left") || Input.GetKey("a")) {
+			pressingLeft = true;
+		}
+		if (Input.GetKey ("right") || Input.GetKey("d")) {
+			pressingRight = true;
+		}
+	}
+
+	void UpdateVelocityWithRecordedInput() {
+
+		if (pressingUp) {
+			velocity += movementSpeed * Vector3.up;
+		}
+		if (pressingDown) {
+			velocity += movementSpeed * Vector3.down;
+		}
+		if (pressingLeft) {
+			velocity += movementSpeed * Vector3.left;
+		}
+		if (pressingRight) {
+			velocity += movementSpeed * Vector3.right;
+		}
+
+		// Cap at max speed (in any direction)
+		if (velocity.x > maxSpeed) {velocity.x = maxSpeed;}
+		if (velocity.x < -maxSpeed) {velocity.x = -maxSpeed;}
+		if (velocity.y > maxSpeed) {velocity.y = maxSpeed;}
+		if (velocity.y < -maxSpeed) {velocity.y = -maxSpeed;}
 	}
 
 	void UpdatePosition() {
@@ -27,6 +82,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void UpdateVelocity() {
+		
 		if (Input.GetKey ("up") || Input.GetKey("w")) {
 			velocity += movementSpeed * Vector3.up;
 		}
@@ -45,8 +101,6 @@ public class PlayerController : MonoBehaviour {
 		if (velocity.x < -maxSpeed) {velocity.x = -maxSpeed;}
 		if (velocity.y > maxSpeed) {velocity.y = maxSpeed;}
 		if (velocity.y < -maxSpeed) {velocity.y = -maxSpeed;}
-			
-
 	}
 
 	void ApplyDrag() {
