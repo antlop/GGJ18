@@ -1239,8 +1239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4243bf92faeee1a4592c5cb56dc43fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rows: 30
-  Colomns: 30
+  Rows: 4
+  Colomns: 2
   HordeMemberPrefab: {fileID: 1126584923662676, guid: 68fa1e13cdc26dd4494f9db63c59eff6,
     type: 2}
 --- !u!1 &2041855673

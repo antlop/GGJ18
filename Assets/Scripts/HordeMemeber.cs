@@ -15,13 +15,13 @@ public class HordeMemeber : MonoBehaviour {
 
 	void Start() {
 		Followers = new GameObject[3];
-		Followers [0] = new GameObject();
+		/*Followers [0] = new GameObject();
 		Followers [1] = new GameObject();
 		Followers [2] = new GameObject();
 
 		Followers [0].tag = "Unused";
 		Followers [1].tag = "Unused";
-		Followers [2].tag = "Unused";
+		Followers [2].tag = "Unused";*/
 
 	}
 

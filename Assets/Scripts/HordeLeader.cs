@@ -26,7 +26,9 @@ public class HordeLeader : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown (KeyCode.T)) {
+			Destroy(GameObject.Find ("New Game Object"));
+		}
 	}
 	/*void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");
@@ -49,7 +51,7 @@ public class HordeLeader : MonoBehaviour {
 
 		if (obj.GetComponent<HordeMemeber>() == null) {
 			obj.AddComponent<HordeMemeber> ();
-
+			obj.layer = 9;
 		}
 		BFS (obj);
 		obj.GetComponent<HordeMemeber> ().AddedIndex = ++FollowerCount;
@@ -57,6 +59,8 @@ public class HordeLeader : MonoBehaviour {
 		if (FollowerCount > maxFollowerCount) {
 			maxFollowerCount = FollowerCount;
 		}
+
+		Destroy(GameObject.Find ("New Game Object"));
 	}
 
 	void BFS(GameObject obj) {
@@ -71,7 +75,12 @@ public class HordeLeader : MonoBehaviour {
 				GameObject node = q.Dequeue ();
 
 				for (int i = 0; i < 3; ++i) {
-					if (node.GetComponent<HordeMemeber> ().Followers [i].tag == "Unused") {
+					if (node.GetComponent<HordeMemeber> ().Followers [i] == null) {
+						node.GetComponent<HordeMemeber> ().Followers [i] = obj;
+						obj.GetComponent<HordeMemeber> ().ID = i;
+						obj.GetComponent<HordeMemeber> ().Leader = node;
+						return;
+					} else if (node.GetComponent<HordeMemeber> ().Followers [i].tag == "Unused") {
 						node.GetComponent<HordeMemeber> ().Followers [i] = obj;
 						obj.GetComponent<HordeMemeber> ().ID = i;
 						obj.GetComponent<HordeMemeber> ().Leader = node;
