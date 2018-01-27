@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EndOfTileDetector : MonoBehaviour {
 
-	GameObject tileGenerator;
+	public GameObject tileGenerator;
 
 	// Use this for initialization
 	void Start () {
