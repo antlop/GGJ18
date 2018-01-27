@@ -15,6 +15,10 @@ public class HordeLeader : MonoBehaviour {
 	private int limitingFollowerCount = 75;
 	public bool USELIMITER = true;
 
+
+	public Sprite infected;
+	public Sprite notInfected;
+
 	// Use this for initialization
 	void Start () {
 		Followers = new GameObject[3];
@@ -65,6 +69,9 @@ public class HordeLeader : MonoBehaviour {
 		if (FollowerCount > maxFollowerCount) {
 			maxFollowerCount = FollowerCount;
 		}
+
+		obj.GetComponent<SpriteRenderer> ().sprite = infected;
+		obj.GetComponent<Floating> ().enabled = false;
 
 		Destroy(GameObject.Find ("New Game Object"));
 	}
@@ -126,6 +133,8 @@ public class HordeLeader : MonoBehaviour {
 			Debug.Log ("not null");
 			lastAdded.GetComponent<HordeMemeber> ().Leader.GetComponent<HordeMemeber> ().Followers [lastAdded.GetComponent<HordeMemeber> ().ID] = new GameObject ();
 			lastAdded.GetComponent<HordeMemeber> ().Leader.GetComponent<HordeMemeber> ().Followers [lastAdded.GetComponent<HordeMemeber> ().ID].tag = "Unused";
+			lastAdded.GetComponent<SpriteRenderer> ().sprite = notInfected;
+			lastAdded.GetComponent<Floating> ().enabled = false;
 			Destroy (lastAdded);
 			FollowerCount -= 1;
 		}

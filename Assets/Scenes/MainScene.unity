@@ -467,6 +467,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: infected
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ba7b42a1fe42a746980ec92157a16d7,
+        type: 3}
+    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: notInfected
+      value: 
+      objectReference: {fileID: 21300000, guid: 6cf4f9d718b2bb8409d61c4eaa55367e,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
   m_IsPrefabParent: 0
