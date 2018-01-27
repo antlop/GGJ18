@@ -6,8 +6,6 @@ public class EndlessTile : MonoBehaviour {
 
 	public GameObject endOfTileDetector;
 
-	GameObject tileGenerator;
-
 	// Use this for initialization
 	void Start () {
 		
@@ -20,8 +18,6 @@ public class EndlessTile : MonoBehaviour {
 	}
 
 	public void Init(GameObject tileGen) {
-		Debug.Log ("Placed new tile!");
-		tileGenerator = tileGen;
 		endOfTileDetector.GetComponent<EndOfTileDetector>().Init(tileGen);
 	}
 

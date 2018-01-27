@@ -10,7 +10,7 @@ public class EndlessTileGenerator : MonoBehaviour {
 	LinkedList<GameObject> currentTiles;
 
 	// TODO: Get a not-hard-coded value for this
-	public int startingXPosition = 0;
+	public float startingXPosition = 0;
 	public float tileWidth = 30;
 
 
@@ -20,6 +20,8 @@ public class EndlessTileGenerator : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		currentTiles = new LinkedList<GameObject> ();
+
+		tileWidth = tile.transform.Find ("Background").GetComponent<SpriteRenderer> ().bounds.size.x;
 
 
 		int numTotalStartingPreloadedTiles = numPreloadedTilesAhead + numPreloadedTilesBehind + 1;
