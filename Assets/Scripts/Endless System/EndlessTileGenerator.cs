@@ -22,9 +22,6 @@ public class EndlessTileGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButton(0)) {
-			PlaceNextTile();
-		}
 	}
 
 	void PlaceNextTile() {
@@ -32,16 +29,17 @@ public class EndlessTileGenerator : MonoBehaviour {
 		float newTileXPosition = lastTileXPosition + tileWidth;
 
 		GameObject newTile = Instantiate (tile);
-		newTile.GetComponent<EndlessTile> ().Init ();
+
+		// Pass in self GameObject so that tile can tell us when player reaches end of it
+		newTile.GetComponent<EndlessTile> ().Init (gameObject);
 		newTile.transform.position = new Vector3 (newTileXPosition, 0, 0);
 
 
 		lastTileXPosition = newTileXPosition;
 	}
 
-	void PlayerReachedEndOfOldestTileCallback() {
+	public void PlayerReachedEndOfOldestTileCallback() {
 		PlaceNextTile ();
-
 		// TODO: Get rid of oldest tile.
 	}
 }
