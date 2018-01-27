@@ -264,6 +264,46 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &337398756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 337398758}
+  - component: {fileID: 337398757}
+  m_Layer: 0
+  m_Name: AudioMuter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &337398757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337398756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b1814fade39483c9d2295bcaffaa1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &337398758
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337398756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 162.521, y: -40.38202, z: -9.09943}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447680109
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +506,21 @@ Prefab:
     - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106516565901032, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: inputThrust
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106516565901032, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: waterFlowVelocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106516565901032, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: waterViscosity
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}

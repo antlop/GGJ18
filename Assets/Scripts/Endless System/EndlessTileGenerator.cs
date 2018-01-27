@@ -47,7 +47,6 @@ public class EndlessTileGenerator : MonoBehaviour {
 	}
 
 	void PlaceNextTile() {
-		Debug.Log("Next tile!");
 		float newTileXPosition = lastTileXPosition + tileWidth;
 
 		GameObject newTile = Instantiate (tile);

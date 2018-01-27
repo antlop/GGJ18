@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public Vector3 velocity;
-	public float movementSpeed;
+	public float inputThrust;
 	public float maxSpeed;
 	public float drag;
 	// public Vector2 acceleration;
+
+	public float waterFlowVelocity;
+	public float waterViscosity;
 
 	// To be able to get inputs in Update() and apply them 
 	// in FixedUpdate() to get rid of jittering on collision
@@ -31,9 +33,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		UpdateVelocityWithRecordedInput ();
-		ApplyDrag ();
-		transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (velocity.x, velocity.y);
+		// UpdateVelocityWithRecordedInput ();
+
+		AddForceFromRecordedInputs ();
+		ApplyFluidDrag ();
+
+		//ApplyDrag ();
+		//transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (velocity.x, velocity.y);
 	}
 
 	void RecordInputs() {
@@ -42,6 +48,7 @@ public class PlayerController : MonoBehaviour {
 		pressingLeft = false;
 		pressingRight = false;
 		if (Input.GetKey ("up") || Input.GetKey("w")) {
+			Debug.Log ("Pressing up!");
 			pressingUp = true;
 		}
 		if (Input.GetKey ("down") || Input.GetKey("s")) {
@@ -55,55 +62,40 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void UpdateVelocityWithRecordedInput() {
+	void AddForceFromRecordedInputs() {
+		Vector2 directionVector;
 
 		if (pressingUp) {
-			velocity += movementSpeed * Vector3.up;
+			directionVector = Vector2.up;
+			Debug.Log ("Direction vector is: " + directionVector);
+			transform.GetComponent<Rigidbody2D> ().AddForce(directionVector * inputThrust);
 		}
 		if (pressingDown) {
-			velocity += movementSpeed * Vector3.down;
+			directionVector = Vector2.down;
+			Debug.Log ("Direction vector is: " + directionVector);
+			transform.GetComponent<Rigidbody2D> ().AddForce(directionVector * inputThrust);
 		}
 		if (pressingLeft) {
-			velocity += movementSpeed * Vector3.left;
+			directionVector = Vector2.left;
+			Debug.Log ("Direction vector is: " + directionVector);
+			transform.GetComponent<Rigidbody2D> ().AddForce(directionVector * inputThrust);
 		}
 		if (pressingRight) {
-			velocity += movementSpeed * Vector3.right;
+			directionVector = Vector2.right;
+			Debug.Log ("Direction vector is: " + directionVector);
+			transform.GetComponent<Rigidbody2D> ().AddForce(directionVector * inputThrust);
 		}
-
-		// Cap at max speed (in any direction)
-		if (velocity.x > maxSpeed) {velocity.x = maxSpeed;}
-		if (velocity.x < -maxSpeed) {velocity.x = -maxSpeed;}
-		if (velocity.y > maxSpeed) {velocity.y = maxSpeed;}
-		if (velocity.y < -maxSpeed) {velocity.y = -maxSpeed;}
 	}
 
-	void UpdatePosition() {
-		transform.position += velocity * Time.deltaTime;
-	}
 
-	void UpdateVelocity() {
-		
-		if (Input.GetKey ("up") || Input.GetKey("w")) {
-			velocity += movementSpeed * Vector3.up;
-		}
-		if (Input.GetKey ("down") || Input.GetKey("s")) {
-			velocity += movementSpeed * Vector3.down;
-		}
-		if (Input.GetKey ("left") || Input.GetKey("a")) {
-			velocity += movementSpeed * Vector3.left;
-		}
-		if (Input.GetKey ("right") || Input.GetKey("d")) {
-			velocity += movementSpeed * Vector3.right;
-		}
 
-		// Cap at max speed (in any direction)
-		if (velocity.x > maxSpeed) {velocity.x = maxSpeed;}
-		if (velocity.x < -maxSpeed) {velocity.x = -maxSpeed;}
-		if (velocity.y > maxSpeed) {velocity.y = maxSpeed;}
-		if (velocity.y < -maxSpeed) {velocity.y = -maxSpeed;}
-	}
-
-	void ApplyDrag() {
-		velocity -= drag * Time.deltaTime * velocity;
+	void ApplyFluidDrag() {
+		float playerVelocity = transform.GetComponent<Rigidbody2D> ().velocity.x;
+		float relativeVelocity = waterFlowVelocity - playerVelocity;
+		float force = waterViscosity * Mathf.Pow (relativeVelocity, 2);
+		if (relativeVelocity < 0) {
+			force = -force;
+		}
+		transform.GetComponent<Rigidbody2D> ().AddForce (force * Vector2.right);
 	}
 }
