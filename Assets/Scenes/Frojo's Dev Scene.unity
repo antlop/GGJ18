@@ -152,6 +152,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114181243355940010, guid: 7919eca6d3c804f7eb817795c2600b86,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517029978557202, guid: 7919eca6d3c804f7eb817795c2600b86, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7919eca6d3c804f7eb817795c2600b86, type: 2}
   m_IsPrefabParent: 0
@@ -187,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   movementSpeed: 20
-  maxSpeed: 75
+  maxSpeed: 50
   drag: 1.5
 --- !u!212 &276057878
 SpriteRenderer:
@@ -457,7 +466,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 1517029978557202, guid: 7919eca6d3c804f7eb817795c2600b86, type: 2}
   tileWidth: 20
-  numPreloadedTiles: 4
+  numPreloadedTilesAhead: 3
+  numPreloadedTilesBehind: 2
 --- !u!4 &2118418078
 Transform:
   m_ObjectHideFlags: 0

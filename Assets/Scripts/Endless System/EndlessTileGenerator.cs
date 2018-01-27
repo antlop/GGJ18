@@ -10,14 +10,21 @@ public class EndlessTileGenerator : MonoBehaviour {
 	LinkedList<GameObject> currentTiles;
 
 	// TODO: Get a not-hard-coded value for this
+	public int startingXPosition = 0;
 	public float tileWidth = 30;
 
-	public int numPreloadedTiles = 4;
+
+	public int numPreloadedTilesAhead = 4;
+	public int numPreloadedTilesBehind = 5;
 
 	// Use this for initialization
 	public void Start () {
 		currentTiles = new LinkedList<GameObject> ();
-		for (int i = 0; i < numPreloadedTiles; i++) {
+
+
+		int numTotalStartingPreloadedTiles = numPreloadedTilesAhead + numPreloadedTilesBehind + 1;
+		lastTileXPosition = startingXPosition - tileWidth * numPreloadedTilesBehind;
+		for (int i = 0; i < numTotalStartingPreloadedTiles ; i++) {
 			PlaceNextTile ();
 		}
 		
@@ -27,18 +34,26 @@ public class EndlessTileGenerator : MonoBehaviour {
 	void Update () {
 	}
 
+	void LoadInitialTiles() {
+		
+
+	}
+
+	void PlaceTileAt(float xPosition) {
+		
+
+	}
+
 	void PlaceNextTile() {
 		Debug.Log("Next tile!");
 		float newTileXPosition = lastTileXPosition + tileWidth;
 
 		GameObject newTile = Instantiate (tile);
-
 		// Pass in self GameObject so that tile can tell us when player reaches end of it
 		newTile.GetComponent<EndlessTile> ().Init (gameObject);
 		newTile.transform.position = new Vector3 (newTileXPosition, 0, 0);
 
 		lastTileXPosition = newTileXPosition;
-
 		currentTiles.AddLast(newTile);
 	}
 
