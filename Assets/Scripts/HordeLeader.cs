@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class HordeLeader : MonoBehaviour {
@@ -8,6 +9,8 @@ public class HordeLeader : MonoBehaviour {
 	public GameObject[] Followers;
 	public GameObject lastAdded;
 	public int FollowerCount = 0;
+	private double maxFollowerCount = 0;
+	public Canvas GameOverCanvas;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +53,10 @@ public class HordeLeader : MonoBehaviour {
 		}
 		BFS (obj);
 		obj.GetComponent<HordeMemeber> ().AddedIndex = ++FollowerCount;
+
+		if (FollowerCount > maxFollowerCount) {
+			maxFollowerCount = FollowerCount;
+		}
 	}
 
 	void BFS(GameObject obj) {
@@ -112,6 +119,9 @@ public class HordeLeader : MonoBehaviour {
 	void checkForLastAdded() {
 		if (Followers [0].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Debug.Log ("GAme Over!");
+			GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
+			GameOverCanvas.GetComponent<CanvasAppear> ().Score = maxFollowerCount * 300;
+			Destroy(GetComponent<PlayerController> ());
 		} else if (Followers [1].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Destroy (Followers [1]);
 			Followers [1] = new GameObject ();
