@@ -17,7 +17,7 @@ public class GeneratePotentialHorde : MonoBehaviour {
 			for (int x = -halfRows; x < halfRows; ++x) {
 				for (int y = -halfCol; y < halfCol; ++y) {
 
-					Instantiate (HordeMemberPrefab, new Vector3 (x * 2, y * 2, 0), Quaternion.identity);
+					Instantiate (HordeMemberPrefab, new Vector3 (x, y, 0), Quaternion.identity);
 				}
 			}
 		}

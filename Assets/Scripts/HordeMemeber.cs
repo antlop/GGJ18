@@ -8,8 +8,10 @@ public class HordeMemeber : MonoBehaviour {
 	public GameObject Leader;
 	public int ID; 
 
+	public int AddedIndex;
+
 	Vector2 goalPos = Vector2.zero;
-	float speed = 5.0f;
+	float speed = 3.0f;
 
 	void Start() {
 		Followers = new GameObject[3];
@@ -26,21 +28,37 @@ public class HordeMemeber : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");
-		if( other.gameObject.tag == "NotInfected" ) {
-			GameObject.FindGameObjectWithTag("HordeLeader").GetComponent<HordeLeader>().newInfected (other.gameObject);
+		if (other.gameObject.tag == "NotInfected") {
+			GameObject.FindGameObjectWithTag ("HordeLeader").GetComponent<HordeLeader> ().newInfected (other.gameObject);
 		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.gameObject.tag == "SingleEnemyDestroyer") {
+			GameObject.FindGameObjectWithTag ("HordeLeader").GetComponent<HordeLeader> ().RemoveFromBFS ();
+			Destroy (other.gameObject);
+		} else if (other.gameObject.tag == "MultipleEnemyDestroyer") {
+			GameObject.FindGameObjectWithTag ("HordeLeader").GetComponent<HordeLeader> ().RemoveFromBFS ();
+			Destroy (other.gameObject);
+		}
+	}
+
+	void Update() {
+		if (Leader == null) {
+			GameObject.FindGameObjectWithTag ("HordeLeader").GetComponent<HordeLeader> ().newInfected (gameObject);
+		}
+		Debug.DrawRay (transform.position, transform.forward, Color.white);
 	}
 
 	void flock() {
 		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (Leader.transform.position - transform.position), speed * Time.deltaTime);
 		//transform.position += transform.forward * Time.deltaTime * speed;
-		if (Vector3.Distance (transform.position, Leader.transform.position) > 5.0f) {
+		float dist = Vector3.Distance (transform.position, Leader.transform.position);
+		if ( dist > 5.0f) {
 			if( ID < 4 ) {
-				//Leader.GetComponent<HordeMemeber> ().Followers [ID].tag = "Unused";
-
 			}
-		} else if (Vector3.Distance (transform.position, Leader.transform.position) > 0.25f) {
-			transform.position = Vector2.MoveTowards (transform.position, Leader.transform.position, speed * Time.deltaTime);
+		} else if (dist > 0.015f) {
+			transform.position = Vector2.MoveTowards (transform.position, Leader.transform.position, speed * Time.deltaTime * dist);
 		} 
 
 	}
@@ -52,26 +70,6 @@ public class HordeMemeber : MonoBehaviour {
 		} else {
 			goalPos = Leader.transform.position;
 		}
+
 	}
-	/*
-	void DisconnectFollowers() {
-		
-		Queue<GameObject> q = new Queue<GameObject> ();
-		q.Enqueue (Follower);
-
-		while (q.Count > 0) {
-			GameObject node = q.Dequeue ();
-
-			for (int i = 0; i < 3; ++i) {
-				if (node.GetComponent<HordeMemeber> ().Followers [i].tag != "Unused") {
-					node.GetComponent<HordeMemeber> ().Followers [i] = obj;
-					obj.GetComponent<HordeMemeber> ().ID = i;
-					obj.GetComponent<HordeMemeber> ().Leader = node;
-					return;
-				} else {
-					q.Enqueue (node.GetComponent<HordeMemeber> ().Followers [i]);
-				}
-			}
-		}
-	}*/
 }

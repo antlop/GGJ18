@@ -9,6 +9,8 @@ TagManager:
   - Unused
   - NotInfected
   - Infected
+  - SingleEnemyDestroyer
+  - MultipleEnemyDestroyer
   layers:
   - Default
   - TransparentFX
