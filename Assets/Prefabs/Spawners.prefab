@@ -173,8 +173,8 @@ MonoBehaviour:
   BottomOfSpawnPoint: {fileID: 4535462152584548}
   SpawnTime: 3
   SpawnTypes:
-  - {fileID: 11400000, guid: ebf58cb552c8187409caf42686ec5857, type: 2}
-  - {fileID: 11400000, guid: 0ed122d95c2ca1b45ab34b03daca6104, type: 2}
+  - {fileID: 11400000, guid: b7f9fcb0a3b8551479a49d1cc3c3d1e9, type: 2}
+  - {fileID: 11400000, guid: 16a862930bbe37d47bd0d72c9f82a56e, type: 2}
 --- !u!114 &114558097146400646
 MonoBehaviour:
   m_ObjectHideFlags: 1
