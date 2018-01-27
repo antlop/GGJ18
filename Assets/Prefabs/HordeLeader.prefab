@@ -109,6 +109,7 @@ MonoBehaviour:
   Followers: []
   lastAdded: {fileID: 0}
   FollowerCount: 0
+  GameOverCanvas: {fileID: 0}
 --- !u!212 &212208347442655146
 SpriteRenderer:
   m_ObjectHideFlags: 1
