@@ -22,7 +22,6 @@ public class HordeMemeber : MonoBehaviour {
 		Followers [0].tag = "Unused";
 		Followers [1].tag = "Unused";
 		Followers [2].tag = "Unused";*/
-
 	}
 
 

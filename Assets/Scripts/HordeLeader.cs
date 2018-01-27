@@ -15,6 +15,10 @@ public class HordeLeader : MonoBehaviour {
 	private int limitingFollowerCount = 75;
 	public bool USELIMITER = true;
 
+
+	public Sprite infected;
+	public Sprite notInfected;
+
 	// Use this for initialization
 	void Start () {
 		Followers = new GameObject[3];
@@ -44,6 +48,8 @@ public class HordeLeader : MonoBehaviour {
 		Debug.Log ("Collide");
 		if (other.gameObject.tag == "NotInfected") {
 			newInfected (other.gameObject);
+
+			GetComponentInChildren<AudioSource> ().Play ();
 		}
 
 	}
@@ -65,6 +71,9 @@ public class HordeLeader : MonoBehaviour {
 		if (FollowerCount > maxFollowerCount) {
 			maxFollowerCount = FollowerCount;
 		}
+
+		obj.GetComponent<SpriteRenderer> ().sprite = infected;
+		obj.GetComponent<Floating> ().enabled = false;
 
 		Destroy(GameObject.Find ("New Game Object"));
 	}
@@ -126,6 +135,8 @@ public class HordeLeader : MonoBehaviour {
 			Debug.Log ("not null");
 			lastAdded.GetComponent<HordeMemeber> ().Leader.GetComponent<HordeMemeber> ().Followers [lastAdded.GetComponent<HordeMemeber> ().ID] = new GameObject ();
 			lastAdded.GetComponent<HordeMemeber> ().Leader.GetComponent<HordeMemeber> ().Followers [lastAdded.GetComponent<HordeMemeber> ().ID].tag = "Unused";
+			lastAdded.GetComponent<SpriteRenderer> ().sprite = notInfected;
+			lastAdded.GetComponent<Floating> ().enabled = false;
 			Destroy (lastAdded);
 			FollowerCount -= 1;
 		}
@@ -134,6 +145,7 @@ public class HordeLeader : MonoBehaviour {
 	void checkForLastAdded() {
 		if (Followers [0].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Debug.Log ("GAme Over!");
+			GameOverCanvas.enabled = true;
 			GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
 			GameOverCanvas.GetComponent<CanvasAppear> ().Score = maxFollowerCount * 300;
 			Destroy(GetComponent<PlayerController> ());
