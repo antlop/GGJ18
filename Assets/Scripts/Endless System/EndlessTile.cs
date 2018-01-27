@@ -29,11 +29,6 @@ public class EndlessTile : MonoBehaviour {
 	// TODO: On collision with end of tile, call the PlayerReachedEndOfOldestTileCallback()
 
 	void OnTriggerEnter2D(Collider2D other) {
-		Debug.Log ("Other thing entered tile trigger!");
-		if (other.tag == "Player") {
-			Debug.Log ("Player entered tile trigger!");
-			tileGenerator.GetComponent<EndlessTileGenerator> ().PlayerReachedEndOfOldestTileCallback ();
-		}
 	}
 
 }
