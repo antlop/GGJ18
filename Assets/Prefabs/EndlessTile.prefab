@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4892620446151898}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd3c1f595eea491894dd6bff7917b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileGenerator: {fileID: 0}
 --- !u!212 &212314078970506278
 SpriteRenderer:
   m_ObjectHideFlags: 1
