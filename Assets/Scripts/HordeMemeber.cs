@@ -29,23 +29,23 @@ public class HordeMemeber : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");
 		if (other.gameObject.tag == "NotInfected") {
-			GameObject.FindGameObjectWithTag ("HordeLeader").GetComponent<HordeLeader> ().newInfected (other.gameObject);
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().newInfected (other.gameObject);
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "SingleEnemyDestroyer") {
-			GameObject.FindGameObjectWithTag ("HordeLeader").GetComponent<HordeLeader> ().RemoveFromBFS ();
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().RemoveFromBFS ();
 			Destroy (other.gameObject);
 		} else if (other.gameObject.tag == "MultipleEnemyDestroyer") {
-			GameObject.FindGameObjectWithTag ("HordeLeader").GetComponent<HordeLeader> ().RemoveFromBFS ();
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().RemoveFromBFS ();
 			Destroy (other.gameObject);
 		}
 	}
 
 	void Update() {
 		if (Leader == null) {
-			GameObject.FindGameObjectWithTag ("HordeLeader").GetComponent<HordeLeader> ().newInfected (gameObject);
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().newInfected (gameObject);
 		}
 		Debug.DrawRay (transform.position, transform.forward, Color.white);
 	}
@@ -66,7 +66,7 @@ public class HordeMemeber : MonoBehaviour {
 	void FixedUpdate () {
 		flock ();
 		if (Leader == null) {
-			goalPos = GameObject.FindGameObjectWithTag ("HordeLeader").transform.position;
+			goalPos = GameObject.FindGameObjectWithTag ("Player").transform.position;
 		} else {
 			goalPos = Leader.transform.position;
 		}
