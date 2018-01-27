@@ -143,6 +143,7 @@ public class HordeLeader : MonoBehaviour {
 	void checkForLastAdded() {
 		if (Followers [0].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Debug.Log ("GAme Over!");
+			GameOverCanvas.enabled = true;
 			GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
 			GameOverCanvas.GetComponent<CanvasAppear> ().Score = maxFollowerCount * 300;
 			Destroy(GetComponent<PlayerController> ());
