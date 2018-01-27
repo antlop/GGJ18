@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Horde
+  - HordeLeader
+  - Unused
+  - NotInfected
+  - Infected
   layers:
   - Default
   - TransparentFX
