@@ -522,7 +522,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 601822458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.02, y: 0.92, z: -0.0859375}
+  m_LocalPosition: {x: -10.84, y: 0.92, z: -0.0859375}
   m_LocalScale: {x: 20, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1028,6 +1028,22 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1615410629}
+--- !u!1 &1704914413 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1505619786646412, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840,
+    type: 2}
+  m_PrefabInternal: {fileID: 1933831031}
+--- !u!114 &1704914415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704914413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1752765804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,8 +1152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4243bf92faeee1a4592c5cb56dc43fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rows: 15
-  Colomns: 8
+  Rows: 30
+  Colomns: 30
   HordeMemberPrefab: {fileID: 1126584923662676, guid: 68fa1e13cdc26dd4494f9db63c59eff6,
     type: 2}
 --- !u!1001 &1933831031

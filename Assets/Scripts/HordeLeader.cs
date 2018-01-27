@@ -12,6 +12,9 @@ public class HordeLeader : MonoBehaviour {
 	private double maxFollowerCount = 0;
 	public Canvas GameOverCanvas;
 
+	private int limitingFollowerCount = 75;
+	public bool USELIMITER = true;
+
 	// Use this for initialization
 	void Start () {
 		Followers = new GameObject[3];
@@ -46,6 +49,9 @@ public class HordeLeader : MonoBehaviour {
 	}
 
 	public void newInfected(GameObject obj) {
+
+		if (USELIMITER && FollowerCount >= limitingFollowerCount)
+			return;
 
 		obj.tag = "Infected";
 

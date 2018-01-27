@@ -54,9 +54,8 @@ public class HordeMemeber : MonoBehaviour {
 		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (Leader.transform.position - transform.position), speed * Time.deltaTime);
 		//transform.position += transform.forward * Time.deltaTime * speed;
 		float dist = Vector3.Distance (transform.position, Leader.transform.position);
-		if ( dist > 5.0f) {
-			if( ID < 4 ) {
-			}
+		if ( dist > 7.0f) {
+			// need to figure out how to destroy individual
 		} else if (dist > 0.015f) {
 			transform.position = Vector2.MoveTowards (transform.position, Leader.transform.position, speed * Time.deltaTime * dist);
 		} 
