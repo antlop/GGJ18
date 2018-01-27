@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	public float inputThrust;
-	public float maxSpeed;
-	public float drag;
-	// public Vector2 acceleration;
 
 	public float waterFlowVelocity;
 	public float waterViscosity;
