@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class SpawningManager : MonoBehaviour
 {
     public Transform HorizontalLocationOfSpawnPoint;
     public Transform TopOfSpawnPoint;
     public Transform BottomOfSpawnPoint;
     public float SpawnTime = 3f;
-    public Enemy[] Enemies;
+    public SpawnableObject[] SpawnTypes;
     
     void Start()
     {
@@ -17,31 +17,34 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
-        var enemy = GetNextEnemy();
-        if (enemy == null)
+        var spawn = GetNextSpawn();
+        if (spawn == null)
             return;
 
         var newPosition = new Vector2(HorizontalLocationOfSpawnPoint.position.x, Random.Range(BottomOfSpawnPoint.position.y, TopOfSpawnPoint.position.y));
 
-        Instantiate(enemy.Prefab, newPosition, Quaternion.LookRotation(Vector3.forward));
+        Instantiate(spawn.Prefab, newPosition, Quaternion.LookRotation(Vector3.forward));
     }
 
-    private Enemy GetNextEnemy()
+    private SpawnableObject GetNextSpawn()
     {
+        if (SpawnTypes.Length == 1)
+            return SpawnTypes[0];
+
         var randomRoll = Random.Range(0f, 1f);
         float totalPercentage = 0f;
 
-        Enemy nextEnemy = null;
-        foreach (var enemy in Enemies)
+        SpawnableObject nextSpawn = null;
+        foreach (var spawn in SpawnTypes)
         {
-            totalPercentage += enemy.ProbabilityOfSpawn;
+            totalPercentage += spawn.ProbabilityOfSpawn;
             if (randomRoll <= totalPercentage)
             {
-                nextEnemy = enemy;
+                nextSpawn = spawn;
                 break;
             }
         }
 
-        return nextEnemy;
+        return nextSpawn;
     }
 }
