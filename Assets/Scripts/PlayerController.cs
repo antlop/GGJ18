@@ -24,19 +24,12 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		RecordInputs ();
-		// UpdateVelocity ();
-		// ApplyDrag ();
-		// UpdatePosition ();
 	}
 
 	void FixedUpdate() {
-		// UpdateVelocityWithRecordedInput ();
 
 		AddForceFromRecordedInputs ();
 		ApplyFluidDrag ();
-
-		//ApplyDrag ();
-		//transform.GetComponent<Rigidbody2D> ().velocity = new Vector2 (velocity.x, velocity.y);
 	}
 
 	void RecordInputs() {
@@ -45,7 +38,6 @@ public class PlayerController : MonoBehaviour {
 		pressingLeft = false;
 		pressingRight = false;
 		if (Input.GetKey ("up") || Input.GetKey("w")) {
-			Debug.Log ("Pressing up!");
 			pressingUp = true;
 		}
 		if (Input.GetKey ("down") || Input.GetKey("s")) {
@@ -64,27 +56,21 @@ public class PlayerController : MonoBehaviour {
 
 		if (pressingUp) {
 			directionVector = Vector2.up;
-			Debug.Log ("Direction vector is: " + directionVector);
 			transform.GetComponent<Rigidbody2D> ().AddForce(directionVector * inputThrust);
 		}
 		if (pressingDown) {
 			directionVector = Vector2.down;
-			Debug.Log ("Direction vector is: " + directionVector);
 			transform.GetComponent<Rigidbody2D> ().AddForce(directionVector * inputThrust);
 		}
 		if (pressingLeft) {
 			directionVector = Vector2.left;
-			Debug.Log ("Direction vector is: " + directionVector);
 			transform.GetComponent<Rigidbody2D> ().AddForce(directionVector * inputThrust);
 		}
 		if (pressingRight) {
 			directionVector = Vector2.right;
-			Debug.Log ("Direction vector is: " + directionVector);
 			transform.GetComponent<Rigidbody2D> ().AddForce(directionVector * inputThrust);
 		}
 	}
-
-
 
 	void ApplyFluidDrag() {
 		float playerVelocity = transform.GetComponent<Rigidbody2D> ().velocity.x;
