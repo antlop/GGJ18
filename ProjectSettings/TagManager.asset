@@ -15,6 +15,7 @@ TagManager:
   - Border
   - BottTilePos
   - TopTilePos
+  - highscoresPanel
   layers:
   - Default
   - TransparentFX
