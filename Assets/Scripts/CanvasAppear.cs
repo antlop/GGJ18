@@ -13,7 +13,7 @@ public class CanvasAppear : MonoBehaviour {
 	void Update () {
 		if (initialize) {
 			Debug.Log ("ADDING SCORE");
-			transform.GetChild (2).GetComponent<Text> ().text = "Score: " + Score;
+			transform.GetChild (1).GetComponent<Text> ().text = "Score: " + Score;
 			initialize = false;
 		}
 
