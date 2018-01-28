@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DistanceCheck : MonoBehaviour {
 	private GameObject player;
 	public float distanceThreshhold = 7.0f;
