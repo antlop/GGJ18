@@ -13,6 +13,7 @@ public class HighScores : MonoBehaviour {
 
 	public TextAsset Scores;
 	public List<RecScore> ScoresList;
+	public int maxScores = 15;
 
 	// Use this for initialization
 	void Start () {
@@ -26,24 +27,35 @@ public class HighScores : MonoBehaviour {
 	}
 
 	public bool checkAgainstHighScores(int score) {
-		for (int i = 0; i < ScoresList.Count; ++i) {
-			if (score > ScoresList [i].Score) {
-				return true;
+		if (ScoresList.Count < maxScores) {
+			return true;
+		} else {
+			for (int i = 0; i < ScoresList.Count; ++i) {
+				if (score > ScoresList [i].Score) {
+					return true;
+				}
 			}
 		}
 		return false;
 	}
 
 	public void addScoreToList(int score, string name) {
-		int insertIndex = 0;
-		for (int i = 0; i < ScoresList.Count; ++i) {
-			if (score > ScoresList [i].Score) {
-				RecScore newScore = new RecScore ();
-				newScore.Name = name;
-				newScore.Score = score;
-				ScoresList.Insert (i, newScore);
-				ScoresList.RemoveAt (ScoresList.Count - 1);
-				break;
+		if (ScoresList.Count < maxScores) {
+			RecScore newScore = new RecScore ();
+			newScore.Name = name;
+			newScore.Score = score;
+			ScoresList.Add (newScore);
+		} else {
+			int insertIndex = 0;
+			for (int i = 0; i < ScoresList.Count; ++i) {
+				if (score > ScoresList [i].Score) {
+					RecScore newScore = new RecScore ();
+					newScore.Name = name;
+					newScore.Score = score;
+					ScoresList.Insert (i, newScore);
+					ScoresList.RemoveAt (ScoresList.Count - 1);
+					break;
+				}
 			}
 		}
 	}
