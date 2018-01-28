@@ -6,6 +6,7 @@ public class BorderGenerator : MonoBehaviour {
 
 	public List<GameObject> TopTiles;
 	public List<GameObject> BottomTiles;
+	public GameObject FillTile;
 
 	public float widthOfTubeSection = 50.0f;
 
@@ -39,10 +40,22 @@ public class BorderGenerator : MonoBehaviour {
 			if (TopTiles.Count > 0) {
 				GameObject obj = Instantiate (TopTiles [Random.Range (0, TopTiles.Count)], new Vector3(i*3.0f + topStartingX, 9, 0), Quaternion.identity) as GameObject;
 				obj.transform.parent = transform;
+
+
+				for (int j = 0; j < 2; ++j) {
+					GameObject up = Instantiate (FillTile, new Vector3(i*3.0f + topStartingX, 12+j*3, 0), Quaternion.identity) as GameObject;
+					up.transform.parent = transform;
+				}
 			}
 			if (BottomTiles.Count > 0) {
 				GameObject obj = Instantiate (BottomTiles [Random.Range (0, BottomTiles.Count)], new Vector3 (i * 3.0f + topStartingX, -9, 0), Quaternion.identity) as GameObject;
 				obj.transform.parent = transform;
+
+
+				for (int j = 0; j < 2; ++j) {
+					GameObject up = Instantiate (FillTile, new Vector3(i*3.0f + topStartingX, -12-j*3, 0), Quaternion.identity) as GameObject;
+					up.transform.parent = transform;
+				}
 			}
 		}
 	}
