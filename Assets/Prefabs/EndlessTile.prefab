@@ -306,7 +306,11 @@ MonoBehaviour:
   - {fileID: 1063948784515844, guid: 9e6cfc22cf6ff9846be614b1b05dd0a5, type: 2}
   - {fileID: 1391155555792326, guid: ff218095de952f04196fbfa0cf806d77, type: 2}
   - {fileID: 1100169722902058, guid: d1b1c887d64c0584da7c6c187521e6ae, type: 2}
+  FillTile: {fileID: 1747716369476256, guid: db7001a4397d98147a64fd4fc70d8bc0, type: 2}
   widthOfTubeSection: 40
+  percentForWallObsticle: 5
+  maxTileHeight: 2
+  maxTileWidth: 4
 --- !u!114 &114771205804520730
 MonoBehaviour:
   m_ObjectHideFlags: 1
