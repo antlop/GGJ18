@@ -17,9 +17,11 @@ public class Camera2DFollow : MonoBehaviour {
     private float _topOfLevelY;
     private float _bottomOfLevelY;
 
+
     // Use this for initialization
     void Start()
-    {
+	{
+		Cursor.visible = false;
         _startOfLevelX = StartOfLevel.position.x;
         _topOfLevelY = TopOfLevel.position.y;
         _bottomOfLevelY = BottomOfLevel.position.y;
