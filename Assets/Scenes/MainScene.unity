@@ -160,6 +160,26 @@ Transform:
   m_PrefabParentObject: {fileID: 4992947069096898, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840,
     type: 2}
   m_PrefabInternal: {fileID: 207197164}
+--- !u!1 &207197166 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1561871529824120, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840,
+    type: 2}
+  m_PrefabInternal: {fileID: 207197164}
+--- !u!114 &207197167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207197166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf0943055ac5744da537c4b01dd700a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _displacementTex: {fileID: 2800000, guid: 2abb95587b9ad415a9f784b52175e818, type: 3}
+  _waterTex: {fileID: 2800000, guid: d5733bc1ed7300048a51e5d06ac38e9c, type: 3}
+  _turbulence: 130
+  _scrollOffset: 0
 --- !u!1001 &257876011
 Prefab:
   m_ObjectHideFlags: 0
