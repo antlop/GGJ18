@@ -118,6 +118,15 @@ public class HordeLeader : MonoBehaviour {
 	}
 
 	bool noneOfMyFollowersAreUnused(GameObject obj) {
+
+		for (int i = 0; i < 3; ++i) {
+			if (Followers [i] == null) {
+				Followers [i] = new GameObject ();
+				Followers [i].tag = "Unused";
+			}
+		}
+
+
 		if (Followers [0].tag == "Unused") {
 			Followers[0] = obj;
 			Followers[0].GetComponent<HordeMemeber> ().Leader = gameObject;
@@ -140,7 +149,7 @@ public class HordeLeader : MonoBehaviour {
 	public void RemoveFromBFS() {
 		checkForLastAdded ();
 		Debug.Log ("Remove");
-		if (lastAdded != null) {
+		if ( lastAdded != null) {
 			Debug.Log ("not null");
 			lastAdded.GetComponent<HordeMemeber> ().Leader.GetComponent<HordeMemeber> ().Followers [lastAdded.GetComponent<HordeMemeber> ().ID] = new GameObject ();
 			lastAdded.GetComponent<HordeMemeber> ().Leader.GetComponent<HordeMemeber> ().Followers [lastAdded.GetComponent<HordeMemeber> ().ID].tag = "Unused";
