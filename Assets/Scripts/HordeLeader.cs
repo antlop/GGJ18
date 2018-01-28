@@ -152,12 +152,14 @@ public class HordeLeader : MonoBehaviour {
 	}
 
 	void checkForLastAdded() {
-		if (Followers [0].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
+		if (FollowerCount <= 1) {
 			Debug.Log ("GAme Over!");
-			GameOverCanvas.enabled = true;
-			GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
-			GameOverCanvas.GetComponent<CanvasAppear> ().Score = maxFollowerCount * 300;
-			Destroy(GetComponent<PlayerController> ());
+			if (GameOverCanvas.GetComponent<CanvasAppear> () == null) {
+				GameOverCanvas.gameObject.SetActive (true);
+				GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
+				GameOverCanvas.GetComponent<CanvasAppear> ().Score = maxFollowerCount * 300;
+				Destroy (GetComponent<PlayerController> ());
+			}
 		} else if (Followers [1].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Destroy (Followers [1]);
 			Followers [1] = new GameObject ();
