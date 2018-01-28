@@ -87,7 +87,11 @@ public class HordeLeader : MonoBehaviour {
 		obj.GetComponent<SpriteRenderer> ().sprite = infected;
 		obj.GetComponent<Floating> ().enabled = false;
 
+		obj.GetComponent<PulssateGlowEffect> ().myController = GetComponent<PulssatingController>();
+
 		Destroy(GameObject.Find ("New Game Object"));
+
+		StartBlinking (true);
 	}
 
 	void BFS(GameObject obj) {
@@ -166,6 +170,7 @@ public class HordeLeader : MonoBehaviour {
 			Destroy (lastAdded);
 			FollowerCount -= 1;
 			GetComponentInChildren<AudioSource> ().PlayOneShot (hordeMemberDeathClip);
+			StartBlinking(false);
 		}
 	}
 
@@ -182,17 +187,20 @@ public class HordeLeader : MonoBehaviour {
 				GameOverCanvas.GetComponent<CanvasAppear> ().Score = CalculateScore ();
 				Destroy (GetComponent<PlayerController> ());
 				Cursor.visible = true;
+				StartBlinking(false);
 			}
 		} else if (Followers [1].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Destroy (Followers [1]);
 			Followers [1] = new GameObject ();
 			Followers [1].tag = "Unused";
 			FollowerCount -= 1;
+			StartBlinking(false);
 		} else if (Followers [2].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Destroy (Followers[2]);
 			Followers [2] = new GameObject ();
 			Followers [2].tag = "Unused";
 			FollowerCount -= 1;
+			StartBlinking(false);
 		} else {
 
 			Queue<GameObject> q = new Queue<GameObject> ();
@@ -212,6 +220,43 @@ public class HordeLeader : MonoBehaviour {
 					}
 				}
 			}
+		}
+	}
+
+	void StartBlinking(bool Good) {
+
+		Queue<GameObject> q = new Queue<GameObject> ();
+		if( Followers[0].tag != "Unused")
+			q.Enqueue (Followers [0]);
+		if( Followers[1].tag != "Unused")
+			q.Enqueue (Followers [1]);
+		if( Followers[2].tag != "Unused")
+			q.Enqueue (Followers [2]);
+
+		while (q.Count > 0) {
+			GameObject node = q.Dequeue ();
+
+			node.GetComponent<PulssateGlowEffect> ().pulseGood = Good;
+			node.GetComponent<PulssateGlowEffect> ().shouldPulse = true;
+
+			HordeMemeber hm = node.GetComponent<HordeMemeber> ();
+
+			for (int i = 0; i < 3; ++i) {
+				if (hm.Followers == null) {
+					Debug.Log ("no followers allocated");
+				} else if (hm.Followers[i] == null) {
+					Debug.Log ("no follower[" + i + "] connected");
+				} else if (hm.Followers [i].tag != "Unused") {
+					q.Enqueue (hm.Followers [i]);
+				}
+			}
+		}
+
+		Debug.Log ("Should pulse");
+		if (GetComponent<PulssatingController> ().shouldPulse) {
+			GetComponent<PulssatingController> ().pulseDuration = 1.5f;
+		} else {
+			GetComponent<PulssatingController> ().shouldPulse = true;
 		}
 	}
 }
