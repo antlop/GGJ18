@@ -62,7 +62,7 @@ public class HordeLeader : MonoBehaviour {
 			Debug.Log ("Hit Big Enemy");
 			RemoveFromBFS ();
 		} else if (other.gameObject.layer == 11) {
-			GetComponentInChildren<AudioSource> ().PlayOneShot (borderHitClip);
+			GetComponentInChildren<AudioSource> ().PlayOneShot (borderHitClip, 0.1f);
 		}
     }
 

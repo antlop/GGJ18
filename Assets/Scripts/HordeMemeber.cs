@@ -9,8 +9,8 @@ public class HordeMemeber : MonoBehaviour {
 	public int ID; 
 
 	public int AddedIndex;
+    public AudioClip pickupAudioClip;
 
-	Vector2 goalPos = Vector2.zero;
 	float speed = 3.0f;
 
 	void Start() {
@@ -27,10 +27,18 @@ public class HordeMemeber : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");
-		if (other.gameObject.tag == "NotInfected") {
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().newInfected (other.gameObject);
-		}
-	    else if (other.gameObject.tag == "SingleEnemyDestroyer")
+		if (other.gameObject.tag == "NotInfected")
+		{
+		    var leader = GameObject.FindGameObjectWithTag("Player");
+		    if (leader != null)
+            {
+                var hordeComponent = leader.GetComponent<HordeLeader>();
+                hordeComponent.newInfected(other.gameObject);
+                leader.GetComponentInChildren<AudioSource>().PlayOneShot(hordeComponent.pickupAudioClip);
+            }
+
+        }
+        else if (other.gameObject.tag == "SingleEnemyDestroyer")
 	    {
 	        GameObject.FindGameObjectWithTag("Player").GetComponent<HordeLeader>().RemoveFromBFS();
 	    }
@@ -69,11 +77,5 @@ public class HordeMemeber : MonoBehaviour {
 
 	void FixedUpdate () {
 		flock ();
-		if (Leader == null) {
-			goalPos = GameObject.FindGameObjectWithTag ("Player").transform.position;
-		} else {
-			goalPos = Leader.transform.position;
-		}
-
 	}
 }
