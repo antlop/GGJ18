@@ -176,6 +176,7 @@ public class HordeLeader : MonoBehaviour {
 				GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
 				GameOverCanvas.GetComponent<CanvasAppear> ().Score = CalculateScore ();
 				Destroy (GetComponent<PlayerController> ());
+				Cursor.visible = true;
 			}
 		} else if (Followers [1].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Destroy (Followers [1]);
