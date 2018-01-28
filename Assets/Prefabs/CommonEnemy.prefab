@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58416681635025060}
   - component: {fileID: 50091347198868066}
   - component: {fileID: 114918631065572728}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CommonEnemy
   m_TagString: SingleEnemyDestroyer
   m_Icon: {fileID: 0}

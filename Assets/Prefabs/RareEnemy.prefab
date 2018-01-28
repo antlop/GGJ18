@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4691749661018078}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpikeLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 6926474624037801865, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114174665873215552}
   - component: {fileID: 50176019864224182}
   - component: {fileID: 58451344285271852}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RareEnemy
   m_TagString: MultipleEnemyDestroyer
   m_Icon: {fileID: 0}
