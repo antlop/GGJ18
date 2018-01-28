@@ -6,7 +6,7 @@ using UnityEngine;
 public class CanvasAppear : MonoBehaviour {
 
 	float alpha = 0.0f;
-	public double Score = 0;
+	public int Score = 0;
 	bool initialize = true;
 
 	// Update is called once per frame
@@ -25,5 +25,4 @@ public class CanvasAppear : MonoBehaviour {
 
 		transform.GetComponent<CanvasGroup> ().alpha = alpha;
 	}
-
 }
