@@ -33,22 +33,18 @@ public class HordeMemeber : MonoBehaviour {
 	    else if (other.gameObject.tag == "SingleEnemyDestroyer")
 	    {
 	        GameObject.FindGameObjectWithTag("Player").GetComponent<HordeLeader>().RemoveFromBFS();
-	        Destroy(other.gameObject);
 	    }
 	    else if (other.gameObject.tag == "MultipleEnemyDestroyer")
 	    {
 	        GameObject.FindGameObjectWithTag("Player").GetComponent<HordeLeader>().RemoveFromBFS();
-	        Destroy(other.gameObject);
 	    }
     }
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "SingleEnemyDestroyer") {
 			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().RemoveFromBFS ();
-			Destroy (other.gameObject);
 		} else if (other.gameObject.tag == "MultipleEnemyDestroyer") {
 			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().RemoveFromBFS ();
-			Destroy (other.gameObject);
 		}
 	}
 
