@@ -12,6 +12,7 @@ public class CanvasAppear : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (initialize) {
+			Debug.Log ("ADDING SCORE");
 			transform.GetChild (2).GetComponent<Text> ().text = "Score: " + Score;
 			initialize = false;
 		}
