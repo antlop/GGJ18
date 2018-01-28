@@ -51,10 +51,19 @@ public class HordeLeader : MonoBehaviour {
 
 			GetComponentInChildren<AudioSource> ().Play ();
 		}
+        else if (other.gameObject.tag == "SingleEnemyDestroyer")
+		{
+            Debug.Log("Hit Litte Enemy");
+            RemoveFromBFS();
+		}
+		else if (other.gameObject.tag == "MultipleEnemyDestroyer")
+		{
+		    Debug.Log("Hit Big Enemy");
+		    RemoveFromBFS();
+        }
+    }
 
-	}
-
-	public void newInfected(GameObject obj) {
+    public void newInfected(GameObject obj) {
 
 		if (USELIMITER && FollowerCount >= limitingFollowerCount)
 			return;

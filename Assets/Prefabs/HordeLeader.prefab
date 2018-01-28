@@ -266,11 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a180bf4a1c23348c0867b5d17324726c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputThrust: 5
-  maxSpeed: 5
-  drag: 1.5
-  waterFlowVelocity: 0
-  waterViscosity: 0
+  inputThrust: 15
+  waterFlowVelocity: 5
+  waterViscosity: 0.4
 --- !u!114 &114838208204455984
 MonoBehaviour:
   m_ObjectHideFlags: 1

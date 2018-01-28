@@ -10,7 +10,16 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("Fire", AttackRating, AttackRating);
+        //InvokeRepeating("Fire", AttackRating, AttackRating);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            // do stuff
+            Destroy(gameObject);
+        }
     }
 
     void Fire()
