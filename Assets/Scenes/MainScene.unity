@@ -292,21 +292,6 @@ Prefab:
       propertyPath: GameOverCanvas
       value: 
       objectReference: {fileID: 1104546977}
-    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: pickupAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 32765b2731f48b042bb417c51e5b557e, type: 3}
-    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: borderHitClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9371ebf120260a54d83e39f7646a3a2f, type: 3}
-    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: hordeMemberDeathClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 71cca76bc049141f8a29917a2fd03619, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
   m_IsPrefabParent: 0

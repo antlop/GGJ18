@@ -183,7 +183,8 @@ AudioSource:
   m_GameObject: {fileID: 1743476216893534}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 32765b2731f48b042bb417c51e5b557e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -288,6 +289,10 @@ MonoBehaviour:
   USELIMITER: 1
   infected: {fileID: 21300000, guid: 6ba7b42a1fe42a746980ec92157a16d7, type: 3}
   notInfected: {fileID: 21300000, guid: 6cf4f9d718b2bb8409d61c4eaa55367e, type: 3}
+  pickupAudioClip: {fileID: 8300000, guid: 32765b2731f48b042bb417c51e5b557e, type: 3}
+  borderHitClip: {fileID: 8300000, guid: 9371ebf120260a54d83e39f7646a3a2f, type: 3}
+  hordeMemberDeathClip: {fileID: 8300000, guid: 71cca76bc049141f8a29917a2fd03619,
+    type: 3}
 --- !u!212 &212208347442655146
 SpriteRenderer:
   m_ObjectHideFlags: 1
