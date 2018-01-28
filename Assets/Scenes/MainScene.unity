@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverCanvas: {fileID: 798213454}
+  cameraFollower: {fileID: 370870893}
 --- !u!4 &330934884
 Transform:
   m_ObjectHideFlags: 0
@@ -338,6 +339,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &370870893 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114862716805127604, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840,
+    type: 2}
+  m_PrefabInternal: {fileID: 207197164}
+  m_Script: {fileID: 11500000, guid: 94db34b7205bb9c4382619d8685a97f6, type: 3}
 --- !u!1 &798213454 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1959570134657144, guid: eb9ef1907c7035846bc01c07d433f01c,

@@ -189,13 +189,13 @@ public class HordeLeader : MonoBehaviour {
 	void checkForLastAdded() {
 		if (FollowerCount <= 1) {
 			Debug.Log ("Horde leader has died!");
+			gameObject.tag = "Untagged";
 			gameController.PlayerDied (gameObject);
 
 			gameObject.SetActive (false);
 			// Destroy (GetComponent<PlayerController> ());
 
 			// Unset player tag so that camera stops following
-			gameObject.tag = "Untagged";
 			//Destroy(gameObject);
 			//StartBlinking(false);
 		} else if (Followers [1].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {

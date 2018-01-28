@@ -17,6 +17,8 @@ public class Camera2DFollow : MonoBehaviour {
     private float _topOfLevelY;
     private float _bottomOfLevelY;
 
+	private int savedTargetsLength;
+
 
     // Use this for initialization
     void Start()
@@ -75,9 +77,11 @@ public class Camera2DFollow : MonoBehaviour {
         transform.position = newPosition;
     }
 
-    private void LookForTargets()
+    public void LookForTargets()
     {
         var targetObjects = GameObject.FindGameObjectsWithTag(TagNameToFollow);
+		Debug.Log ("Length of target Objects: " + targetObjects.Length);
+
         _targetLength = targetObjects.Length;
         _targets = new Transform[_targetLength];
         for (int i = 0; i < _targetLength; i++)

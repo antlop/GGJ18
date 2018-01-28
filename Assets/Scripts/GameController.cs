@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
 	public GameObject GameOverCanvas;
+	public Camera2DFollow cameraFollower;
 
 	int playerScore = 500;
 
@@ -27,6 +28,8 @@ public class GameController : MonoBehaviour {
 			return;
 		}
 		numAlivePlayers -= 1;
+
+		cameraFollower.LookForTargets ();
 
 			
 		if (numAlivePlayers == 0) {
