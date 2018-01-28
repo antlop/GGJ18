@@ -297,6 +297,52 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e54609e011697c548ae3b7108fa76136, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &330934882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 330934884}
+  - component: {fileID: 330934883}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &330934883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 330934882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73007acc35eff4cbd99152b7a3f32137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameOverCanvas: {fileID: 798213454}
+--- !u!4 &330934884
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 330934882}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4, y: -1.32, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &798213454 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1959570134657144, guid: eb9ef1907c7035846bc01c07d433f01c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1428566775}
 --- !u!1001 &1023491973
 Prefab:
   m_ObjectHideFlags: 0
@@ -346,6 +392,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -6
       objectReference: {fileID: 0}
+    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 330934883}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
   m_IsPrefabParent: 0
@@ -682,6 +733,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 330934883}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
   m_IsPrefabParent: 0

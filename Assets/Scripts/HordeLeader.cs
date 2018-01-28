@@ -31,6 +31,8 @@ public class HordeLeader : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gameController = FindObjectOfType<GameController> ();
+
 		Followers = new GameObject[3];
 		Followers [0] = new GameObject();
 		Followers [1] = new GameObject();
