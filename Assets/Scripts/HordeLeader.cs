@@ -51,10 +51,19 @@ public class HordeLeader : MonoBehaviour {
 
 			GetComponentInChildren<AudioSource> ().Play ();
 		}
+        else if (other.gameObject.tag == "SingleEnemyDestroyer")
+		{
+            Debug.Log("Hit Litte Enemy");
+            RemoveFromBFS();
+		}
+		else if (other.gameObject.tag == "MultipleEnemyDestroyer")
+		{
+		    Debug.Log("Hit Big Enemy");
+		    RemoveFromBFS();
+        }
+    }
 
-	}
-
-	public void newInfected(GameObject obj) {
+    public void newInfected(GameObject obj) {
 
 		if (USELIMITER && FollowerCount >= limitingFollowerCount)
 			return;
@@ -143,12 +152,14 @@ public class HordeLeader : MonoBehaviour {
 	}
 
 	void checkForLastAdded() {
-		if (Followers [0].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
+		if (FollowerCount <= 1) {
 			Debug.Log ("GAme Over!");
-			GameOverCanvas.enabled = true;
-			GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
-			GameOverCanvas.GetComponent<CanvasAppear> ().Score = maxFollowerCount * 300;
-			Destroy(GetComponent<PlayerController> ());
+			if (GameOverCanvas.GetComponent<CanvasAppear> () == null) {
+				GameOverCanvas.gameObject.SetActive (true);
+				GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
+				GameOverCanvas.GetComponent<CanvasAppear> ().Score = maxFollowerCount * 300;
+				Destroy (GetComponent<PlayerController> ());
+			}
 		} else if (Followers [1].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Destroy (Followers [1]);
 			Followers [1] = new GameObject ();

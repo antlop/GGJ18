@@ -51,6 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4406452545808958}
   - component: {fileID: 114181243355940010}
+  - component: {fileID: 114771205804520730}
   m_Layer: 0
   m_Name: EndlessTile
   m_TagString: Untagged
@@ -337,6 +338,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endOfTileDetector: {fileID: 1789915375780026}
+--- !u!114 &114771205804520730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1517029978557202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfdf9ff8a448d846ace9ad843812932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceThreshhold: 80
 --- !u!114 &114956300734156672
 MonoBehaviour:
   m_ObjectHideFlags: 1

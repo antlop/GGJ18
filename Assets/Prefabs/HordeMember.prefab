@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58677607952336128}
   - component: {fileID: 212489771268505818}
   - component: {fileID: 114235791558117220}
+  - component: {fileID: 114445279049490920}
   m_Layer: 8
   m_Name: HordeMember
   m_TagString: NotInfected
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126584923662676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.3581896, y: -0.034408767, z: 0.17217381}
+  m_LocalPosition: {x: 712.54407, y: -3.2065845, z: 0.17217381}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,9 +76,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.004809618, y: 0.0045809746}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.25
 --- !u!114 &114235791558117220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,6 +94,18 @@ MonoBehaviour:
   MaxSpeed: 0.003
   MinRotation: -0.2
   MaxRotation: 0.2
+--- !u!114 &114445279049490920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1126584923662676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfdf9ff8a448d846ace9ad843812932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceThreshhold: 20
 --- !u!212 &212489771268505818
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -30,7 +30,17 @@ public class HordeMemeber : MonoBehaviour {
 		if (other.gameObject.tag == "NotInfected") {
 			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().newInfected (other.gameObject);
 		}
-	}
+	    else if (other.gameObject.tag == "SingleEnemyDestroyer")
+	    {
+	        GameObject.FindGameObjectWithTag("Player").GetComponent<HordeLeader>().RemoveFromBFS();
+	        Destroy(other.gameObject);
+	    }
+	    else if (other.gameObject.tag == "MultipleEnemyDestroyer")
+	    {
+	        GameObject.FindGameObjectWithTag("Player").GetComponent<HordeLeader>().RemoveFromBFS();
+	        Destroy(other.gameObject);
+	    }
+    }
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "SingleEnemyDestroyer") {

@@ -15,9 +15,9 @@ public class Projectile : MonoBehaviour
 		Debug.Log(transform.forward);
     }
 
-    public void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collider.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             // do stuff
             Destroy(gameObject);
