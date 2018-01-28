@@ -223,6 +223,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 20263122583597404, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840,
+        type: 2}
+      propertyPath: orthographic size
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840, type: 2}
   m_IsPrefabParent: 0
@@ -304,6 +309,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be66d3293a667de48adffac9d3d5ee80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &956467782
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: GameOverCanvas
+      value: 
+      objectReference: {fileID: 1104546977}
+    - target: {fileID: 114106516565901032, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: playerNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838352729961328, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+      propertyPath: m_Name
+      value: HordeLeader2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212208347442655146, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212208347442655146, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.8455882
+      objectReference: {fileID: 0}
+    - target: {fileID: 212208347442655146, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.21577065
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106516565901032, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: waterFlowVelocity
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1023491973
 Prefab:
   m_ObjectHideFlags: 0
@@ -352,6 +433,11 @@ Prefab:
         type: 2}
       propertyPath: playerNum
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106516565901032, guid: d75034aa44618f447b46020f5b3b2b9d,
+        type: 2}
+      propertyPath: waterFlowVelocity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}

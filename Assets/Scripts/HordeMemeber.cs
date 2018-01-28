@@ -6,6 +6,8 @@ public class HordeMemeber : MonoBehaviour {
 
 	public GameObject[] Followers;
 	public GameObject Leader;
+
+	public HordeLeader hordeLeader;
 	public int ID; 
 
 	public int AddedIndex;
@@ -41,24 +43,26 @@ public class HordeMemeber : MonoBehaviour {
         else if (other.gameObject.tag == "SingleEnemyDestroyer")
 	    {
 	        GameObject.FindGameObjectWithTag("Player").GetComponent<HordeLeader>().RemoveFromBFS();
+			hordeLeader.RemoveFromBFS();
+
 	    }
 	    else if (other.gameObject.tag == "MultipleEnemyDestroyer")
 	    {
-	        GameObject.FindGameObjectWithTag("Player").GetComponent<HordeLeader>().RemoveFromBFS();
+			hordeLeader.RemoveFromBFS();
 	    }
     }
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "SingleEnemyDestroyer") {
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().RemoveFromBFS ();
+			hordeLeader.RemoveFromBFS ();
 		} else if (other.gameObject.tag == "MultipleEnemyDestroyer") {
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().RemoveFromBFS ();
+			hordeLeader.RemoveFromBFS ();
 		}
 	}
 
 	void Update() {
 		if (Leader == null) {
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<HordeLeader> ().newInfected (gameObject);
+			hordeLeader.newInfected (gameObject);
 		}
 		Debug.DrawRay (transform.position, transform.forward, Color.white);
 	}

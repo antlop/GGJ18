@@ -106,11 +106,13 @@ public class HordeLeader : MonoBehaviour {
 						node.GetComponent<HordeMemeber> ().Followers [i] = obj;
 						obj.GetComponent<HordeMemeber> ().ID = i;
 						obj.GetComponent<HordeMemeber> ().Leader = node;
+						obj.GetComponent<HordeMemeber> ().hordeLeader = gameObject.GetComponent<HordeLeader> ();
 						return;
 					} else if (node.GetComponent<HordeMemeber> ().Followers [i].tag == "Unused") {
 						node.GetComponent<HordeMemeber> ().Followers [i] = obj;
 						obj.GetComponent<HordeMemeber> ().ID = i;
 						obj.GetComponent<HordeMemeber> ().Leader = node;
+						obj.GetComponent<HordeMemeber> ().hordeLeader = gameObject.GetComponent<HordeLeader> ();
 						return;
 					} else {
 						q.Enqueue (node.GetComponent<HordeMemeber> ().Followers [i]);
@@ -133,16 +135,19 @@ public class HordeLeader : MonoBehaviour {
 		if (Followers [0].tag == "Unused") {
 			Followers[0] = obj;
 			Followers[0].GetComponent<HordeMemeber> ().Leader = gameObject;
+			obj.GetComponent<HordeMemeber> ().hordeLeader = gameObject.GetComponent<HordeLeader> ();
 			Followers[0].GetComponent<HordeMemeber> ().ID = 4;
 			return false;
 		} else if( Followers [1].tag == "Unused") {
 			Followers[1] = obj;
 			Followers[1].GetComponent<HordeMemeber> ().Leader = gameObject;
+			obj.GetComponent<HordeMemeber> ().hordeLeader = gameObject.GetComponent<HordeLeader> ();
 			Followers[1].GetComponent<HordeMemeber> ().ID = 4;
 			return false;
 		} else if( Followers [2].tag == "Unused") {
 			Followers[2] = obj;
 			Followers[2].GetComponent<HordeMemeber> ().Leader = gameObject;
+			obj.GetComponent<HordeMemeber> ().hordeLeader = gameObject.GetComponent<HordeLeader> ();
 			Followers[2].GetComponent<HordeMemeber> ().ID = 4;
 			return false;
 		}
