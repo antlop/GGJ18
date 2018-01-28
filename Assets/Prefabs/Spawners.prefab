@@ -171,7 +171,7 @@ MonoBehaviour:
   HorizontalLocationOfSpawnPoint: {fileID: 0}
   TopOfSpawnPoint: {fileID: 4897986183064616}
   BottomOfSpawnPoint: {fileID: 4535462152584548}
-  SpawnTime: 3
+  SpawnTime: 1
   SpawnTypes:
   - {fileID: 11400000, guid: b7f9fcb0a3b8551479a49d1cc3c3d1e9, type: 2}
   - {fileID: 11400000, guid: 16a862930bbe37d47bd0d72c9f82a56e, type: 2}

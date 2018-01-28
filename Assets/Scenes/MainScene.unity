@@ -279,48 +279,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &1048353307
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4306585562397216, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 696.4633
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306585562397216, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 322.19687
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306585562397216, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306585562397216, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306585562397216, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306585562397216, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306585562397216, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4306585562397216, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 98989e4bd3aa7fd418619f279083a06f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!223 &1104546977 stripped
 Canvas:
   m_PrefabParentObject: {fileID: 223289654645538360, guid: eb9ef1907c7035846bc01c07d433f01c,
