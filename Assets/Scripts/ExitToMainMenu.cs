@@ -6,6 +6,7 @@ using UnityEngine;
 public class ExitToMainMenu : MonoBehaviour {
 
 	public void Exit() {
+		Destroy (GameObject.Find ("Menu UI"));
 		SceneManager.LoadScene ("Title");
 	}
 }
