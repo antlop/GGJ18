@@ -31,18 +31,15 @@ public class HordeMemeber : MonoBehaviour {
 		Debug.Log ("Collide");
 		if (other.gameObject.tag == "NotInfected")
 		{
-		    var leader = GameObject.FindGameObjectWithTag("Player");
-		    if (leader != null)
+		    if (hordeLeader != null)
             {
-                var hordeComponent = leader.GetComponent<HordeLeader>();
-                hordeComponent.newInfected(other.gameObject);
-                leader.GetComponentInChildren<AudioSource>().PlayOneShot(hordeComponent.pickupAudioClip);
+                hordeLeader.newInfected(other.gameObject);
+                hordeLeader.GetComponentInChildren<AudioSource>().PlayOneShot(hordeLeader.pickupAudioClip);
             }
 
         }
         else if (other.gameObject.tag == "SingleEnemyDestroyer")
 	    {
-	        GameObject.FindGameObjectWithTag("Player").GetComponent<HordeLeader>().RemoveFromBFS();
 			hordeLeader.RemoveFromBFS();
 
 	    }
