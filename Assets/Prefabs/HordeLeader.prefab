@@ -308,6 +308,7 @@ MonoBehaviour:
   borderHitClip: {fileID: 8300000, guid: 9371ebf120260a54d83e39f7646a3a2f, type: 3}
   hordeMemberDeathClip: {fileID: 8300000, guid: 71cca76bc049141f8a29917a2fd03619,
     type: 3}
+  pickupFlashColor: {r: 1, g: 1, b: 0, a: 0}
 --- !u!212 &212208347442655146
 SpriteRenderer:
   m_ObjectHideFlags: 1

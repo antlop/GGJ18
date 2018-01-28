@@ -9,6 +9,12 @@ public class BorderGenerator : MonoBehaviour {
 
 	public float widthOfTubeSection = 50.0f;
 
+	[Range(0,100)]
+	public int percentForWallObsticle = 5;
+	[Range(1,5)]
+	public int maxTileHeight = 2;
+	public int maxTileWidth = 4;
+
 	// Use this for initialization
 	void Start () {
 		if (TopTiles != null) {
@@ -29,6 +35,7 @@ public class BorderGenerator : MonoBehaviour {
 		float topStartingX = transform.GetChild (1).transform.position.x + 1.5f;
 
 		for (int i = 0; i < widthOfTubeSection; ++i) {
+
 			if (TopTiles.Count > 0) {
 				GameObject obj = Instantiate (TopTiles [Random.Range (0, TopTiles.Count)], new Vector3(i*3.0f + topStartingX, 9, 0), Quaternion.identity) as GameObject;
 				obj.transform.parent = transform;

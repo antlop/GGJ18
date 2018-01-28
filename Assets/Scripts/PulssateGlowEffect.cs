@@ -10,6 +10,8 @@ public class PulssateGlowEffect : MonoBehaviour {
 
 	private bool didEnd = false;
 
+	public Color goodFlashColor;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -22,7 +24,11 @@ public class PulssateGlowEffect : MonoBehaviour {
 
 			float pulsingScale = myController.getScaler ();
 			if (pulseGood) {
-				GetComponent<SpriteRenderer> ().color = new Color (pulsingScale, 1.0f, 1.0f);
+				if (goodFlashColor.r > 0.1f) {
+					GetComponent<SpriteRenderer> ().color = new Color (pulsingScale, pulsingScale, 0);
+				} else {
+					GetComponent<SpriteRenderer> ().color = new Color (0, pulsingScale, 0);
+				}
 			} else {
 				GetComponent<SpriteRenderer> ().color = new Color (1.0f, pulsingScale, 1.0f);
 			}
