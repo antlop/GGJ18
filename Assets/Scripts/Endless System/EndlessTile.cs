@@ -8,7 +8,7 @@ public class EndlessTile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		transform.GetComponent<BorderGenerator> ().GenerateTiles ();
 	}
 	
 	// Update is called once per frame

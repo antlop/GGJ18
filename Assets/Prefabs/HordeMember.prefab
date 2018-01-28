@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 212489771268505818}
   - component: {fileID: 114235791558117220}
   - component: {fileID: 114445279049490920}
+  - component: {fileID: 114663902935638530}
   m_Layer: 8
   m_Name: HordeMember
   m_TagString: NotInfected
@@ -106,6 +107,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceThreshhold: 20
+--- !u!114 &114663902935638530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1126584923662676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a3871f8970c3649a7f8620596ed341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldPulse: 0
+  pulseGood: 1
+  myController: {fileID: 0}
 --- !u!212 &212489771268505818
 SpriteRenderer:
   m_ObjectHideFlags: 1

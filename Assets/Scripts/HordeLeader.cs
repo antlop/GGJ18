@@ -24,6 +24,8 @@ public class HordeLeader : MonoBehaviour {
 	public AudioClip hordeMemberDeathClip;
 
 
+	private bool amDead = false;
+
 	// Use this for initialization
 	void Start () {
 		Followers = new GameObject[3];
@@ -41,6 +43,20 @@ public class HordeLeader : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.T)) {
 			Destroy(GameObject.Find ("New Game Object"));
 		}
+		if (amDead) {
+			// fade to grayed out
+			Color currcolor = GetComponent<SpriteRenderer>().color;
+			if (currcolor.r > 0.2f) {
+				currcolor.r -= Time.deltaTime * 0.2f;
+			}
+			if (currcolor.g > 0.2f) {
+				currcolor.g -= Time.deltaTime * 0.2f;
+			}
+			if (currcolor.b > 0.2f) {
+				currcolor.b -= Time.deltaTime * 0.2f;
+			}
+			GetComponent<SpriteRenderer> ().color = currcolor;
+		}
 	}
 	/*void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");
@@ -51,7 +67,7 @@ public class HordeLeader : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");
-		if (other.gameObject.tag == "NotInfected") {
+		if (other.gameObject.tag == "NotInfected" && !amDead) {
 			newInfected (other.gameObject);
 
 			GetComponentInChildren<AudioSource> ().PlayOneShot (pickupAudioClip);
@@ -62,7 +78,9 @@ public class HordeLeader : MonoBehaviour {
 			Debug.Log ("Hit Big Enemy");
 			RemoveFromBFS ();
 		} else if (other.gameObject.layer == 11) {
-			GetComponentInChildren<AudioSource> ().PlayOneShot (borderHitClip, 0.1f);
+			if (GetComponentInChildren<AudioSource> ()) {
+				GetComponentInChildren<AudioSource> ().PlayOneShot (borderHitClip, 0.1f);
+			}
 		}
     }
 
@@ -186,8 +204,10 @@ public class HordeLeader : MonoBehaviour {
 				GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
 				GameOverCanvas.GetComponent<CanvasAppear> ().Score = CalculateScore ();
 				Destroy (GetComponent<PlayerController> ());
+				Destroy (GetComponentInChildren<AudioSource> ());
 				Cursor.visible = true;
 				StartBlinking(false);
+				amDead = true;
 			}
 		} else if (Followers [1].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Destroy (Followers [1]);

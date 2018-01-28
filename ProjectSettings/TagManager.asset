@@ -13,6 +13,8 @@ TagManager:
   - MultipleEnemyDestroyer
   - Undefined
   - Border
+  - BottTilePos
+  - TopTilePos
   layers:
   - Default
   - TransparentFX

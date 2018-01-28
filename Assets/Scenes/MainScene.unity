@@ -348,10 +348,10 @@ Prefab:
       propertyPath: GameOverCanvas
       value: 
       objectReference: {fileID: 1104546977}
-    - target: {fileID: 114106516565901032, guid: d75034aa44618f447b46020f5b3b2b9d,
+    - target: {fileID: 212208347442655146, guid: d75034aa44618f447b46020f5b3b2b9d,
         type: 2}
-      propertyPath: playerNum
-      value: 1
+      propertyPath: m_SortingOrder
+      value: -6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
