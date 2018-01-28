@@ -1,0 +1,23 @@
+Erythroblast TODO
+
+Boundaries
+	- Generator
+	- Art
+	- Collisions
+
+Title Screen Art
+	- Logo
+	- Text for buttons
+
+Pop animation
+
+Multiplayer
+	- Camera for two players. Raycast to bounding box
+	- sprite tint for players
+
+Reduce the length of the sound effects
+Pop sound should be a splat/squish
+
+Rotate projectile launcher 45 deg
+
+Pulse color when getting a new member
