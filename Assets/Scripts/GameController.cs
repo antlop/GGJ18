@@ -6,8 +6,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject GameOverCanvas;
 
-	int player1Score;
-	int player2Score;
+	int playerScore = 500;
 
 	int playerNum = 1;
 
@@ -29,23 +28,10 @@ public class GameController : MonoBehaviour {
 		}
 		numAlivePlayers -= 1;
 
-		int playerScore = hordeLeader.GetComponent<HordeLeader>().CalculateScore();
-
-		Debug.Log("Player " + playerNum + " has died. " + numAlivePlayers + " players left.");
-
-		if (playerNum == 1) {
-			player1Score = playerScore;
-		} else if (playerNum == 2) {
-			player2Score = playerScore;
-		} else {
-			Debug.LogError ("Not a valid player number!");
-		}
 			
 		if (numAlivePlayers == 0) {
 			GameOver ();
 		}
-
-		playerNum++;
 	}
 
 	void GameOver() {
@@ -53,7 +39,7 @@ public class GameController : MonoBehaviour {
 		if (GameOverCanvas.GetComponent<CanvasAppear> () == null) {
 			GameOverCanvas.gameObject.SetActive (true);
 			GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
-			GameOverCanvas.GetComponent<CanvasAppear> ().Score = player1Score;
+			GameOverCanvas.GetComponent<CanvasAppear> ().Score = playerScore;
 			Cursor.visible = true;
 		}
 	}
