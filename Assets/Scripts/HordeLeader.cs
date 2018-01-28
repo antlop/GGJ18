@@ -10,7 +10,8 @@ public class HordeLeader : MonoBehaviour {
 	public GameObject lastAdded;
 	public int FollowerCount = 0;
 	private int maxFollowerCount = 0;
-	public Canvas GameOverCanvas;
+	//public Canvas GameOverCanvas;
+	public GameController gameController;
 
 	private int limitingFollowerCount = 75;
 	public bool USELIMITER = true;
@@ -23,8 +24,6 @@ public class HordeLeader : MonoBehaviour {
 	public AudioClip borderHitClip;
 	public AudioClip hordeMemberDeathClip;
 
-
-	private bool amDead = false;
 
 	// Use this for initialization
 	void Start () {
@@ -43,20 +42,6 @@ public class HordeLeader : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.T)) {
 			Destroy(GameObject.Find ("New Game Object"));
 		}
-		if (amDead) {
-			// fade to grayed out
-			Color currcolor = GetComponent<SpriteRenderer>().color;
-			if (currcolor.r > 0.2f) {
-				currcolor.r -= Time.deltaTime * 0.2f;
-			}
-			if (currcolor.g > 0.2f) {
-				currcolor.g -= Time.deltaTime * 0.2f;
-			}
-			if (currcolor.b > 0.2f) {
-				currcolor.b -= Time.deltaTime * 0.2f;
-			}
-			GetComponent<SpriteRenderer> ().color = currcolor;
-		}
 	}
 	/*void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");
@@ -67,7 +52,7 @@ public class HordeLeader : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");
-		if (other.gameObject.tag == "NotInfected" && !amDead) {
+		if (other.gameObject.tag == "NotInfected") {
 			newInfected (other.gameObject);
 
 			GetComponentInChildren<AudioSource> ().PlayOneShot (pickupAudioClip);
@@ -78,9 +63,7 @@ public class HordeLeader : MonoBehaviour {
 			Debug.Log ("Hit Big Enemy");
 			RemoveFromBFS ();
 		} else if (other.gameObject.layer == 11) {
-			if (GetComponentInChildren<AudioSource> ()) {
-				GetComponentInChildren<AudioSource> ().PlayOneShot (borderHitClip, 0.1f);
-			}
+			GetComponentInChildren<AudioSource> ().PlayOneShot (borderHitClip, 0.1f);
 		}
     }
 
@@ -168,7 +151,7 @@ public class HordeLeader : MonoBehaviour {
 			return false;
 		} else if( Followers [2].tag == "Unused") {
 			Followers[2] = obj;
-			Followers[2].GetComponent<HordeMemeber> ().Leader = gameObject;
+				Followers[2].GetComponent<HordeMemeber> ().Leader = gameObject;
 			obj.GetComponent<HordeMemeber> ().hordeLeader = gameObject.GetComponent<HordeLeader> ();
 			Followers[2].GetComponent<HordeMemeber> ().ID = 4;
 			return false;
@@ -198,17 +181,16 @@ public class HordeLeader : MonoBehaviour {
 
 	void checkForLastAdded() {
 		if (FollowerCount <= 1) {
-			Debug.Log ("GAme Over!");
-			if (GameOverCanvas.GetComponent<CanvasAppear> () == null) {
-				GameOverCanvas.gameObject.SetActive (true);
-				GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
-				GameOverCanvas.GetComponent<CanvasAppear> ().Score = CalculateScore ();
-				Destroy (GetComponent<PlayerController> ());
-				Destroy (GetComponentInChildren<AudioSource> ());
-				Cursor.visible = true;
-				StartBlinking(false);
-				amDead = true;
-			}
+			Debug.Log ("Horde leader has died!");
+			gameController.PlayerDied (gameObject);
+
+			gameObject.SetActive (false);
+			// Destroy (GetComponent<PlayerController> ());
+
+			// Unset player tag so that camera stops following
+			gameObject.tag = "Untagged";
+			//Destroy(gameObject);
+			//StartBlinking(false);
 		} else if (Followers [1].GetComponent<HordeMemeber> ().AddedIndex >= FollowerCount) {
 			Destroy (Followers [1]);
 			Followers [1] = new GameObject ();

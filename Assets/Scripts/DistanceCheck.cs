@@ -17,7 +17,11 @@ public class DistanceCheck : MonoBehaviour {
 			//if( GetComponent<HordeMemeber>().
 		}
 
-		if (transform.position.x < player.transform.position.x && Vector3.Distance (transform.position, player.transform.position) > distanceThreshhold) {
+		if (player == null) {
+			Destroy (gameObject);
+		}
+
+		else if (transform.position.x < player.transform.position.x && Vector3.Distance (transform.position, player.transform.position) > distanceThreshhold) {
 			Destroy (gameObject);
 		}
 	}
