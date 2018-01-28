@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 public class HordeLeader : MonoBehaviour {
+
+
 
 	public GameObject Horde;
 	public GameObject[] Followers;
@@ -24,6 +27,7 @@ public class HordeLeader : MonoBehaviour {
 	public AudioClip borderHitClip;
 	public AudioClip hordeMemberDeathClip;
 
+	public Color pickupFlashColor;
 
 	// Use this for initialization
 	void Start () {
@@ -88,6 +92,7 @@ public class HordeLeader : MonoBehaviour {
 		obj.GetComponent<SpriteRenderer> ().sprite = infected;
 		obj.GetComponent<Floating> ().enabled = false;
 
+		obj.GetComponent<PulssateGlowEffect> ().goodFlashColor = pickupFlashColor;
 		obj.GetComponent<PulssateGlowEffect> ().myController = GetComponent<PulssatingController>();
 
 		Destroy(GameObject.Find ("New Game Object"));
