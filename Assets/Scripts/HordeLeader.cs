@@ -19,6 +19,11 @@ public class HordeLeader : MonoBehaviour {
 	public Sprite infected;
 	public Sprite notInfected;
 
+	public AudioClip pickupAudioClip;
+	public AudioClip borderHitClip;
+	public AudioClip hordeMemberDeathClip;
+
+
 	// Use this for initialization
 	void Start () {
 		Followers = new GameObject[3];
@@ -49,18 +54,16 @@ public class HordeLeader : MonoBehaviour {
 		if (other.gameObject.tag == "NotInfected") {
 			newInfected (other.gameObject);
 
-			GetComponentInChildren<AudioSource> ().Play ();
+			GetComponentInChildren<AudioSource> ().PlayOneShot (pickupAudioClip);
+		} else if (other.gameObject.tag == "SingleEnemyDestroyer") {
+			Debug.Log ("Hit Litte Enemy");
+			RemoveFromBFS ();
+		} else if (other.gameObject.tag == "MultipleEnemyDestroyer") {
+			Debug.Log ("Hit Big Enemy");
+			RemoveFromBFS ();
+		} else if (other.gameObject.layer == 11) {
+			GetComponentInChildren<AudioSource> ().PlayOneShot (borderHitClip);
 		}
-        else if (other.gameObject.tag == "SingleEnemyDestroyer")
-		{
-            Debug.Log("Hit Litte Enemy");
-            RemoveFromBFS();
-		}
-		else if (other.gameObject.tag == "MultipleEnemyDestroyer")
-		{
-		    Debug.Log("Hit Big Enemy");
-		    RemoveFromBFS();
-        }
     }
 
     public void newInfected(GameObject obj) {
@@ -157,6 +160,7 @@ public class HordeLeader : MonoBehaviour {
 			lastAdded.GetComponent<Floating> ().enabled = false;
 			Destroy (lastAdded);
 			FollowerCount -= 1;
+			GetComponentInChildren<AudioSource> ().PlayOneShot (hordeMemberDeathClip);
 		}
 	}
 
@@ -164,6 +168,12 @@ public class HordeLeader : MonoBehaviour {
 		if (FollowerCount <= 1) {
 			Debug.Log ("GAme Over!");
 			if (GameOverCanvas.GetComponent<CanvasAppear> () == null) {
+
+				GameObject.Find ("Camera").tag = "MainCamera";
+				GameObject.Find ("Camera").GetComponent<Camera> ().targetDisplay = 1;
+				Camera.main.gameObject.SetActive (false);
+				Destroy(transform.GetComponentInChildren<AudioSource> ());
+
 				GameOverCanvas.gameObject.SetActive (true);
 				GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
 				GameOverCanvas.GetComponent<CanvasAppear> ().Score = maxFollowerCount * 300;
