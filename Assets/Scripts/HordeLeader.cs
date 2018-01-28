@@ -172,12 +172,6 @@ public class HordeLeader : MonoBehaviour {
 		if (FollowerCount <= 1) {
 			Debug.Log ("GAme Over!");
 			if (GameOverCanvas.GetComponent<CanvasAppear> () == null) {
-
-				GameObject.Find ("Camera").tag = "MainCamera";
-				GameObject.Find ("Camera").GetComponent<Camera> ().targetDisplay = 1;
-				Camera.main.gameObject.SetActive (false);
-				Destroy(transform.GetComponentInChildren<AudioSource> ());
-
 				GameOverCanvas.gameObject.SetActive (true);
 				GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
 				GameOverCanvas.GetComponent<CanvasAppear> ().Score = CalculateScore ();
