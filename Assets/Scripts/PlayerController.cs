@@ -16,8 +16,16 @@ public class PlayerController : MonoBehaviour {
 	bool pressingLeft;
 	bool pressingRight;
 
+	// Variables for multiplayer
+	public int playerNum;
+	string upKey;
+	string downKey;
+	string rightKey;
+	string leftKey;
+
 	// Use this for initialization
 	void Start () {
+		InitPlayer (playerNum);
 		
 	}
 	
@@ -27,9 +35,24 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-
 		AddForceFromRecordedInputs ();
 		ApplyFluidDrag ();
+	}
+
+	void InitPlayer(int playerNum) {
+		if (playerNum == 1) {
+			upKey = "up";
+			downKey = "down";
+			rightKey = "right";
+			leftKey = "left";
+		} else if (playerNum == 2) {
+			upKey = "w";
+			downKey = "s";
+			rightKey = "d";
+			leftKey = "a";
+		} else {
+			Debug.LogError ("Not a valid player number: " + playerNum);
+		}
 	}
 
 	void RecordInputs() {
@@ -37,16 +60,16 @@ public class PlayerController : MonoBehaviour {
 		pressingDown = false;
 		pressingLeft = false;
 		pressingRight = false;
-		if (Input.GetKey ("up") || Input.GetKey("w")) {
+		if (Input.GetKey (upKey)) {
 			pressingUp = true;
 		}
-		if (Input.GetKey ("down") || Input.GetKey("s")) {
+		if (Input.GetKey (downKey)) {
 			pressingDown = true;
 		}
-		if (Input.GetKey ("left") || Input.GetKey("a")) {
+		if (Input.GetKey (leftKey)) {
 			pressingLeft = true;
 		}
-		if (Input.GetKey ("right") || Input.GetKey("d")) {
+		if (Input.GetKey (rightKey)) {
 			pressingRight = true;
 		}
 	}
