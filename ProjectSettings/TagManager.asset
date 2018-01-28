@@ -11,6 +11,8 @@ TagManager:
   - Infected
   - SingleEnemyDestroyer
   - MultipleEnemyDestroyer
+  - Undefined
+  - Border
   layers:
   - Default
   - TransparentFX
