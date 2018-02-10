@@ -7,12 +7,26 @@ public class SpawningManager : MonoBehaviour
     public Transform HorizontalLocationOfSpawnPoint;
     public Transform TopOfSpawnPoint;
     public Transform BottomOfSpawnPoint;
-    public float SpawnTime = 3f;
+    public float MinSpawnRate = 2f;
+    public float MaxSpawnRate = 0.5f;
+    public float TimeToMaxSpawnRate = 300f;
     public SpawnableObject[] SpawnTypes;
-    
-    void Start()
+
+    private float _lastSpawnTime;
+
+    void Update()
     {
-        InvokeRepeating("Spawn", SpawnTime, SpawnTime);
+        var elapsedTime = GameController.ElapsedTime;
+
+        var spawnRate = MinSpawnRate - ((MinSpawnRate - MaxSpawnRate) * (elapsedTime / TimeToMaxSpawnRate));
+        var clampedSpawnRate = Mathf.Clamp(spawnRate, MaxSpawnRate, MinSpawnRate);
+        Debug.Log(clampedSpawnRate);
+
+        if (clampedSpawnRate + _lastSpawnTime <= elapsedTime)
+        {
+            Spawn();
+            _lastSpawnTime = elapsedTime;
+        }
     }
 
     void Spawn()

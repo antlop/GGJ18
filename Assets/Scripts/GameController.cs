@@ -2,48 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
 
-	public GameObject GameOverCanvas;
-	public Camera2DFollow cameraFollower;
+    public GameObject GameOverCanvas;
+    public Camera2DFollow cameraFollower;
+    [HideInInspector]
+    public static float ElapsedTime;
 
-	int playerScore = 500;
+    int playerScore = 500;
+    int playerNum = 1;
+    int numAlivePlayers;
 
-	int playerNum = 1;
+    void Start()
+    {
+        numAlivePlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+    }
 
-	int numAlivePlayers;
+    void Update()
+    {
+        ElapsedTime += Time.deltaTime;
+    }
 
-	// Use this for initialization
-	void Start () {
-		numAlivePlayers = GameObject.FindGameObjectsWithTag ("Player").Length;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void PlayerDied(GameObject hordeLeader)
+    {
+        if (numAlivePlayers == 0)
+        {
+            return;
+        }
+        numAlivePlayers -= 1;
 
-	public void PlayerDied(GameObject hordeLeader) {
-		if (numAlivePlayers == 0) {
-			return;
-		}
-		numAlivePlayers -= 1;
+        cameraFollower.LookForTargets();
 
-		cameraFollower.LookForTargets ();
 
-			
-		if (numAlivePlayers == 0) {
-			GameOver ();
-		}
-	}
+        if (numAlivePlayers == 0)
+        {
+            GameOver();
+        }
+    }
 
-	void GameOver() {
-		Debug.Log ("Game Over!");
-		if (GameOverCanvas.GetComponent<CanvasAppear> () == null) {
-			GameOverCanvas.gameObject.SetActive (true);
-			GameOverCanvas.gameObject.AddComponent<CanvasAppear> ();
-			GameOverCanvas.GetComponent<CanvasAppear> ().Score = playerScore;
-			Cursor.visible = true;
-		}
-	}
+    void GameOver()
+    {
+        Debug.Log("Game Over!");
+        if (GameOverCanvas.GetComponent<CanvasAppear>() == null)
+        {
+            GameOverCanvas.gameObject.SetActive(true);
+            GameOverCanvas.gameObject.AddComponent<CanvasAppear>();
+            GameOverCanvas.GetComponent<CanvasAppear>().Score = playerScore;
+            Cursor.visible = true;
+        }
+    }
 }
