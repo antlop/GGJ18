@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Camera2DFollow : MonoBehaviour {
-
+public class Camera2DFollow : MonoBehaviour
+{
     public string TagNameToFollow = "Player";
     public float Damping = 0.5f;
     public Transform StartOfLevel;
@@ -17,24 +15,20 @@ public class Camera2DFollow : MonoBehaviour {
     private float _topOfLevelY;
     private float _bottomOfLevelY;
 
-	private int savedTargetsLength;
-
-
     // Use this for initialization
     void Start()
-	{
-		Cursor.visible = false;
+    {
+        Cursor.visible = false;
         _startOfLevelX = StartOfLevel.position.x;
         _topOfLevelY = TopOfLevel.position.y;
         _bottomOfLevelY = BottomOfLevel.position.y;
-        LookForTargets();
     }
 
     void Update()
     {
-        if (_targets == null || _targets.Length == 0)
+        LookForTargets();
+        if (_targets.Length == 0)
         {
-            LookForTargets();
             return;
         }
 
@@ -80,7 +74,6 @@ public class Camera2DFollow : MonoBehaviour {
     public void LookForTargets()
     {
         var targetObjects = GameObject.FindGameObjectsWithTag(TagNameToFollow);
-		Debug.Log ("Length of target Objects: " + targetObjects.Length);
 
         _targetLength = targetObjects.Length;
         _targets = new Transform[_targetLength];

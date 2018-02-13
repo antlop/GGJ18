@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawningManager : MonoBehaviour
 {
-    public Transform HorizontalLocationOfSpawnPoint;
+    public Transform HorizontalSpawnPoint;
     public Transform TopOfSpawnPoint;
     public Transform BottomOfSpawnPoint;
     public float MinSpawnRate = 2f;
@@ -20,7 +20,6 @@ public class SpawningManager : MonoBehaviour
 
         var spawnRate = MinSpawnRate - ((MinSpawnRate - MaxSpawnRate) * (elapsedTime / TimeToMaxSpawnRate));
         var clampedSpawnRate = Mathf.Clamp(spawnRate, MaxSpawnRate, MinSpawnRate);
-        Debug.Log(clampedSpawnRate);
 
         if (clampedSpawnRate + _lastSpawnTime <= elapsedTime)
         {
@@ -35,7 +34,7 @@ public class SpawningManager : MonoBehaviour
         if (spawn == null)
             return;
 
-        var newPosition = new Vector2(HorizontalLocationOfSpawnPoint.position.x, Random.Range(BottomOfSpawnPoint.position.y, TopOfSpawnPoint.position.y));
+        var newPosition = new Vector2(HorizontalSpawnPoint.position.x, Random.Range(BottomOfSpawnPoint.position.y, TopOfSpawnPoint.position.y));
 
         Instantiate(spawn.Prefab, newPosition, Quaternion.LookRotation(Vector3.forward));
     }

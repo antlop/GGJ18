@@ -2,61 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BorderGenerator : MonoBehaviour {
+public class BorderGenerator : MonoBehaviour
+{
 
-	public List<GameObject> TopTiles;
-	public List<GameObject> BottomTiles;
-	public GameObject FillTile;
+    public List<GameObject> TopTiles;
+    public List<GameObject> BottomTiles;
+    public GameObject FillTile;
+    public float widthOfTubeSection = 50.0f;
+    [Range(0, 100)]
+    public int percentForWallObsticle = 5;
+    [Range(1, 5)]
+    public int maxTileHeight = 2;
+    public int maxTileWidth = 4;
 
-	public float widthOfTubeSection = 50.0f;
+    private float _topStartingX;
 
-	[Range(0,100)]
-	public int percentForWallObsticle = 5;
-	[Range(1,5)]
-	public int maxTileHeight = 2;
-	public int maxTileWidth = 4;
+    void Start()
+    {
+        _topStartingX = transform.GetChild(1).transform.position.x - 3f;
+        GenerateTiles();
+    }
 
-	// Use this for initialization
-	void Start () {
-		if (TopTiles != null) {
-			TopTiles = new List<GameObject> ();
-		}
-		if (BottomTiles != null) {
-			BottomTiles = new List<GameObject> ();
-		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void GenerateTiles()
+    {
+        for (int i = 0; i < widthOfTubeSection; ++i)
+        {
+            GenerateTileColumn(i, TopTiles[Random.Range(0, TopTiles.Count)], 9);
+            GenerateTileColumn(i, BottomTiles[Random.Range(0, BottomTiles.Count)], -9);
+        }
+    }
 
-	public void GenerateTiles() {
-		int halfwidth = (int)(widthOfTubeSection / 2);
-		float topStartingX = transform.GetChild (1).transform.position.x + 1.5f;
+    private void GenerateTileColumn(int xPosition, GameObject tileGraphic, float firstTileYOffset)
+    {
 
-		for (int i = 0; i < widthOfTubeSection; ++i) {
+        var tile = Instantiate(tileGraphic, new Vector3(xPosition * 3.0f + _topStartingX, firstTileYOffset, 0), Quaternion.identity);
+        tile.transform.parent = transform;
 
-			if (TopTiles.Count > 0) {
-				GameObject obj = Instantiate (TopTiles [Random.Range (0, TopTiles.Count)], new Vector3(i*3.0f + topStartingX, 9, 0), Quaternion.identity) as GameObject;
-				obj.transform.parent = transform;
-
-
-				for (int j = 0; j < 2; ++j) {
-					GameObject up = Instantiate (FillTile, new Vector3(i*3.0f + topStartingX, 12+j*3, 0), Quaternion.identity) as GameObject;
-					up.transform.parent = transform;
-				}
-			}
-			if (BottomTiles.Count > 0) {
-				GameObject obj = Instantiate (BottomTiles [Random.Range (0, BottomTiles.Count)], new Vector3 (i * 3.0f + topStartingX, -9, 0), Quaternion.identity) as GameObject;
-				obj.transform.parent = transform;
-
-
-				for (int j = 0; j < 2; ++j) {
-					GameObject up = Instantiate (FillTile, new Vector3(i*3.0f + topStartingX, -12-j*3, 0), Quaternion.identity) as GameObject;
-					up.transform.parent = transform;
-				}
-			}
-		}
-	}
+        for (int j = 0; j < 2; ++j)
+        {
+            var stackedTileOffset = firstTileYOffset < 0 ? -12 - j * 3 : 12 + j * 3;
+            var extraRowTile = Instantiate(FillTile, new Vector3(xPosition * 3.0f + _topStartingX, stackedTileOffset, 0), Quaternion.identity);
+            extraRowTile.transform.parent = transform;
+        }
+    }
 }

@@ -6,17 +6,18 @@ public class GameController : MonoBehaviour
 {
 
     public GameObject GameOverCanvas;
-    public Camera2DFollow cameraFollower;
     [HideInInspector]
     public static float ElapsedTime;
+    [HideInInspector]
+    public int[] PlayerScores;
 
-    int playerScore = 500;
-    int playerNum = 1;
-    int numAlivePlayers;
+    private int _activePlayers;
 
     void Start()
     {
-        numAlivePlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        ElapsedTime = 0f;
+        _activePlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        PlayerScores = new int[_activePlayers];
     }
 
     void Update()
@@ -26,16 +27,13 @@ public class GameController : MonoBehaviour
 
     public void PlayerDied(GameObject hordeLeader)
     {
-        if (numAlivePlayers == 0)
+        if (_activePlayers == 0)
         {
             return;
         }
-        numAlivePlayers -= 1;
+        _activePlayers -= 1;
 
-        cameraFollower.LookForTargets();
-
-
-        if (numAlivePlayers == 0)
+        if (_activePlayers == 0)
         {
             GameOver();
         }
@@ -43,12 +41,12 @@ public class GameController : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("Game Over!");
-        if (GameOverCanvas.GetComponent<CanvasAppear>() == null)
+        var canvasAppear = GameOverCanvas.GetComponent<CanvasAppear>();
+        if (canvasAppear == null)
         {
             GameOverCanvas.gameObject.SetActive(true);
             GameOverCanvas.gameObject.AddComponent<CanvasAppear>();
-            GameOverCanvas.GetComponent<CanvasAppear>().Score = playerScore;
+            canvasAppear.Score = PlayerScores[0];
             Cursor.visible = true;
         }
     }

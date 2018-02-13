@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58416681635025060}
   - component: {fileID: 50091347198868066}
   - component: {fileID: 114918631065572728}
+  - component: {fileID: 114295270938815440}
   m_Layer: 12
   m_Name: CommonEnemy
   m_TagString: SingleEnemyDestroyer
@@ -79,6 +80,18 @@ CircleCollider2D:
   m_Offset: {x: -0.004966378, y: 0.014898896}
   serializedVersion: 2
   m_Radius: 0.4410782
+--- !u!114 &114295270938815440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627632430746890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfdf9ff8a448d846ace9ad843812932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DistanceThreshhold: 75
 --- !u!114 &114817054045956158
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114174665873215552}
   - component: {fileID: 50176019864224182}
   - component: {fileID: 58451344285271852}
+  - component: {fileID: 114533763699258890}
   m_Layer: 12
   m_Name: RareEnemy
   m_TagString: MultipleEnemyDestroyer
@@ -128,6 +129,18 @@ MonoBehaviour:
   AttackRating: 3
   ProjectilePrefab: {fileID: 1822627162418992, guid: 1553bb6c5c8ba6044831c93410cb3d4a,
     type: 2}
+--- !u!114 &114533763699258890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862697003626722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfdf9ff8a448d846ace9ad843812932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DistanceThreshhold: 75
 --- !u!114 &114534177750803186
 MonoBehaviour:
   m_ObjectHideFlags: 1

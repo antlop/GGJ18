@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518550183132044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.628148, y: -0.0631333, z: 0.09366339}
+  m_LocalPosition: {x: 7.628148, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4947546163166072}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754abd8789c9ab541a15ccf9c090d999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalLocationOfSpawnPoint: {fileID: 0}
+  HorizontalSpawnPoint: {fileID: 0}
   TopOfSpawnPoint: {fileID: 4897986183064616}
   BottomOfSpawnPoint: {fileID: 4535462152584548}
   MinSpawnRate: 2
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754abd8789c9ab541a15ccf9c090d999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalLocationOfSpawnPoint: {fileID: 0}
+  HorizontalSpawnPoint: {fileID: 0}
   TopOfSpawnPoint: {fileID: 4897986183064616}
   BottomOfSpawnPoint: {fileID: 4535462152584548}
   MinSpawnRate: 3

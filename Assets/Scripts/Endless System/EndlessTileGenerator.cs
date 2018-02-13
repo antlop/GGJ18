@@ -2,73 +2,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndlessTileGenerator : MonoBehaviour {
+public class EndlessTileGenerator : MonoBehaviour
+{
+    public GameObject TilePrefab;
+    public float StartingXPosition = 0;
+    public float TileWidth = 30;
+    public int TilesAhead = 1;
+    public int TilesBehind = 1;
 
-	public GameObject tile;
-	float lastTileXPosition = 0;
+    private float _lastTileXPosition;
+    private LinkedList<GameObject> _currentTiles;
 
-	LinkedList<GameObject> currentTiles;
+    public void Start()
+    {
+        _currentTiles = new LinkedList<GameObject>();
 
-	// TODO: Get a not-hard-coded value for this
-	public float startingXPosition = 0;
-	public float tileWidth = 30;
+        TileWidth = TilePrefab.transform.Find("Background").GetComponent<SpriteRenderer>().bounds.size.x;
 
+        int numTotalStartingPreloadedTiles = TilesAhead + TilesBehind + 1;
+        _lastTileXPosition = StartingXPosition - TileWidth * TilesBehind;
 
-	public int numPreloadedTilesAhead = 4;
-	public int numPreloadedTilesBehind = 5;
+        for (int i = 0; i < numTotalStartingPreloadedTiles; i++)
+        {
+            PlaceNextTile();
+        }
+    }
 
-	// Use this for initialization
-	public void Start () {
-		currentTiles = new LinkedList<GameObject> ();
+    // Update is called once per frame
+    void Update()
+    {
+    }
 
-		tileWidth = tile.transform.Find ("Background").GetComponent<SpriteRenderer> ().bounds.size.x;
+    void PlaceNextTile()
+    {
+        float newTileXPosition = _lastTileXPosition + TileWidth;
 
+        GameObject newTile = Instantiate(TilePrefab);
+        // Pass in self GameObject so that tile can tell us when player reaches end of it
+        newTile.GetComponent<EndlessTile>().Init(gameObject);
+        newTile.transform.position = new Vector3(newTileXPosition, 0, 0);
 
-		int numTotalStartingPreloadedTiles = numPreloadedTilesAhead + numPreloadedTilesBehind + 1;
-		lastTileXPosition = startingXPosition - tileWidth * numPreloadedTilesBehind;
-		for (int i = 0; i < numTotalStartingPreloadedTiles ; i++) {
-			PlaceNextTile ();
-		}
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
+        _lastTileXPosition = newTileXPosition;
+        _currentTiles.AddLast(newTile);
+    }
 
-	void LoadInitialTiles() {
-		
+    void RemoveOldestTile()
+    {
+        GameObject oldestTile = _currentTiles.First.Value;
+        _currentTiles.RemoveFirst();
+        Destroy(oldestTile);
+    }
 
-	}
-
-	void PlaceTileAt(float xPosition) {
-		
-
-	}
-
-	void PlaceNextTile() {
-		float newTileXPosition = lastTileXPosition + tileWidth;
-
-		GameObject newTile = Instantiate (tile);
-		// Pass in self GameObject so that tile can tell us when player reaches end of it
-		newTile.GetComponent<EndlessTile> ().Init (gameObject);
-		newTile.transform.position = new Vector3 (newTileXPosition, 0, 0);
-
-		lastTileXPosition = newTileXPosition;
-		currentTiles.AddLast(newTile);
-	}
-
-	void RemoveOldestTile() {
-		GameObject oldestTile = currentTiles.First.Value;
-		currentTiles.RemoveFirst ();
-
-		Debug.Log ("Remove oldest tile!");
-		Destroy (oldestTile);
-	}
-
-	public void PlayerReachedEndOfOldestTileCallback() {
-		PlaceNextTile ();
-		// TODO: Get rid of oldest tile.
-		RemoveOldestTile();
-	}
+    public void PlayerReachedEndOfOldestTileCallback()
+    {
+        PlaceNextTile();
+        RemoveOldestTile();
+    }
 }

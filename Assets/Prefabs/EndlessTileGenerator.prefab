@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7303faa562a45d7a26cdfdf98a6a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 1517029978557202, guid: 7919eca6d3c804f7eb817795c2600b86, type: 2}
-  startingXPosition: 0
-  tileWidth: 20
-  numPreloadedTilesAhead: 1
-  numPreloadedTilesBehind: 2
+  TilePrefab: {fileID: 1323321920343058, guid: 7919eca6d3c804f7eb817795c2600b86, type: 2}
+  StartingXPosition: -15
+  TileWidth: 30
+  TilesAhead: 0
+  TilesBehind: 1

@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfdf9ff8a448d846ace9ad843812932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceThreshhold: 20
+  distanceThreshhold: 100
 --- !u!114 &114663902935638530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +121,7 @@ MonoBehaviour:
   shouldPulse: 0
   pulseGood: 1
   myController: {fileID: 0}
+  goodFlashColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &212489771268505818
 SpriteRenderer:
   m_ObjectHideFlags: 1
