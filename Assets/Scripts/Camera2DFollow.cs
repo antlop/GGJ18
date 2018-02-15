@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Tizen;
 
 public class Camera2DFollow : MonoBehaviour
 {
@@ -62,6 +63,7 @@ public class Camera2DFollow : MonoBehaviour
 
         var currentPosition = transform.position;
         var distanceBetweenPlayers = maxX - minX;
+
         var newX = Mathf.Clamp(minX + (distanceBetweenPlayers / 2f), _startOfLevelX, float.MaxValue);
         var newY = Mathf.Clamp(minY + (distanceBetweenPlayers / 2f), _bottomOfLevelY, _topOfLevelY);
 

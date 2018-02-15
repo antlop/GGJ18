@@ -203,21 +203,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 20330958142927066, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840,
-        type: 2}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20330958142927066, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840,
-        type: 2}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20330958142927066, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840,
-        type: 2}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6fe6c1d0e7df7ad4cba31a3d0e865840, type: 2}
   m_IsPrefabParent: 0
@@ -322,7 +307,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &798213454 stripped
 GameObject:
@@ -581,86 +566,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb9ef1907c7035846bc01c07d433f01c, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1490352326
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204942605973320, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: GameOverCanvas
-      value: 
-      objectReference: {fileID: 1104546977}
-    - target: {fileID: 114106516565901032, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: playerNum
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838352729961328, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_Name
-      value: HordeLeader2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212208347442655146, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 0.030933026
-      objectReference: {fileID: 0}
-    - target: {fileID: 212208347442655146, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0.89705884
-      objectReference: {fileID: 0}
-    - target: {fileID: 212208347442655146, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838352729961328, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114838208204455984, guid: d75034aa44618f447b46020f5b3b2b9d,
-        type: 2}
-      propertyPath: gameController
-      value: 
-      objectReference: {fileID: 330934883}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d75034aa44618f447b46020f5b3b2b9d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1890418702
 Prefab:
