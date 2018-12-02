@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Tizen;
+//using UnityEngine.Tizen;
 
 public class Camera2DFollow : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class Camera2DFollow : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         _startOfLevelX = StartOfLevel.position.x;
         _topOfLevelY = TopOfLevel.position.y;
         _bottomOfLevelY = BottomOfLevel.position.y;

@@ -5,5 +5,6 @@ using UnityEngine;
 public class SpawnableObject : ScriptableObject
 {
     public float ProbabilityOfSpawn;
-    public GameObject Prefab;
+	public GameObject Prefab;
+	public bool isFriendly = false;
 }

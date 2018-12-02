@@ -11,12 +11,12 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public int[] PlayerScores;
 
-    private int _activePlayers;
+    private int _activePlayers = 1;
 
     void Start()
     {
         ElapsedTime = 0f;
-        _activePlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        //_activePlayers = GameObject.FindGameObjectsWithTag("Player").Length;
         PlayerScores = new int[_activePlayers];
     }
 
@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
 
         if (_activePlayers == 0)
         {
+            PlayerScores[0] = (int)ElapsedTime * 100;
             GameOver();
         }
     }
@@ -44,10 +45,13 @@ public class GameController : MonoBehaviour
         var canvasAppear = GameOverCanvas.GetComponent<CanvasAppear>();
         if (canvasAppear == null)
         {
-            GameOverCanvas.gameObject.SetActive(true);
-            GameOverCanvas.gameObject.AddComponent<CanvasAppear>();
-            canvasAppear.Score = PlayerScores[0];
+            canvasAppear = GameOverCanvas.gameObject.AddComponent<CanvasAppear>();
+            
             Cursor.visible = true;
         }
+
+        canvasAppear.Score = (int)ElapsedTime * 100;// PlayerScores[0];
+        canvasAppear.initialize = true;
+        GameOverCanvas.gameObject.SetActive(true);
     }
 }

@@ -29,6 +29,8 @@ public class HordeLeader : MonoBehaviour {
 
 	public Color pickupFlashColor;
 
+	public float aliveDuration = 0f;
+
 	// Use this for initialization
 	void Start () {
 		gameController = FindObjectOfType<GameController> ();
@@ -48,6 +50,8 @@ public class HordeLeader : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.T)) {
 			Destroy(GameObject.Find ("New Game Object"));
 		}
+
+		aliveDuration += Time.deltaTime;
 	}
 	/*void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("Collide");

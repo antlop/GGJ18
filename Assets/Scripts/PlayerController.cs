@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float inputThrust;
+	public Vector2 inputThrust;
 
 	public float waterFlowVelocity;
 	public float waterViscosity;
@@ -60,18 +61,27 @@ public class PlayerController : MonoBehaviour {
 		pressingDown = false;
 		pressingLeft = false;
 		pressingRight = false;
-		if (Input.GetKey (upKey)) {
-			pressingUp = true;
-		}
-		if (Input.GetKey (downKey)) {
-			pressingDown = true;
-		}
-		if (Input.GetKey (leftKey)) {
-			pressingLeft = true;
-		}
-		if (Input.GetKey (rightKey)) {
+        
+		if (CrossPlatformInputManager.GetAxis("Horizontal") > 0.1f) {
+            inputThrust.x = Mathf.Abs(CrossPlatformInputManager.GetAxis("Horizontal"));
 			pressingRight = true;
 		}
+		if (CrossPlatformInputManager.GetAxis("Horizontal") < -0.1f)
+        {
+            inputThrust.x = Mathf.Abs(CrossPlatformInputManager.GetAxis("Horizontal"));
+            pressingLeft = true;
+		}
+		if (CrossPlatformInputManager.GetAxis("Vertical") > 0.1f)
+        {
+            inputThrust.y = Mathf.Abs(CrossPlatformInputManager.GetAxis("Vertical"));
+            pressingUp = true;
+		}
+		if (CrossPlatformInputManager.GetAxis("Vertical") < -0.1f)
+        {
+			pressingDown = true;
+            inputThrust.y = Mathf.Abs(CrossPlatformInputManager.GetAxis("Vertical"));
+        }   
+        inputThrust *= 5f;
 	}
 
 	void AddForceFromRecordedInputs() {

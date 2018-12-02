@@ -7,7 +7,7 @@ public class CanvasAppear : MonoBehaviour {
 
 	float alpha = 0.0f;
 	public int Score = 0;
-	bool initialize = true;
+	public bool initialize = true;
 
 	// Update is called once per frame
 	void Update () {

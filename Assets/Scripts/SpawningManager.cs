@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class SpawningManager : MonoBehaviour
 {
+	public HordeLeader Player;
     public Transform HorizontalSpawnPoint;
     public Transform TopOfSpawnPoint;
     public Transform BottomOfSpawnPoint;
     public float MinSpawnRate = 2f;
     public float MaxSpawnRate = 0.5f;
-    public float TimeToMaxSpawnRate = 300f;
     public SpawnableObject[] SpawnTypes;
 
-    private float _lastSpawnTime;
+	private float spawnTimer = 2f;
+	private float spawnBucket = 0f;
 
     void Update()
     {
-        var elapsedTime = GameController.ElapsedTime;
 
-        var spawnRate = MinSpawnRate - ((MinSpawnRate - MaxSpawnRate) * (elapsedTime / TimeToMaxSpawnRate));
-        var clampedSpawnRate = Mathf.Clamp(spawnRate, MaxSpawnRate, MinSpawnRate);
-
-        if (clampedSpawnRate + _lastSpawnTime <= elapsedTime)
-        {
-            Spawn();
-            _lastSpawnTime = elapsedTime;
-        }
+		spawnBucket += Time.deltaTime;
+		if (spawnBucket >= spawnTimer) {
+			Spawn ();
+			spawnTimer = Random.Range (MaxSpawnRate, MinSpawnRate);
+			spawnBucket = 0.0f;
+		}
     }
 
     void Spawn()
@@ -34,7 +32,13 @@ public class SpawningManager : MonoBehaviour
         if (spawn == null)
             return;
 
-        var newPosition = new Vector2(HorizontalSpawnPoint.position.x, Random.Range(BottomOfSpawnPoint.position.y, TopOfSpawnPoint.position.y));
+		// find the best position here
+
+		float randPos = Random.Range (BottomOfSpawnPoint.position.y, TopOfSpawnPoint.position.y);
+		if (!spawn.isFriendly) {
+			randPos = (Random.Range (0, 100) * 0.01f) * (Player.transform.position.y - randPos);
+		}
+		var newPosition = new Vector2(HorizontalSpawnPoint.position.x, randPos);
 
         Instantiate(spawn.Prefab, newPosition, Quaternion.LookRotation(Vector3.forward));
     }

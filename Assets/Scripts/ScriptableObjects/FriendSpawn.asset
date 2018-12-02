@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProbabilityOfSpawn: 0.8
   Prefab: {fileID: 1126584923662676, guid: 68fa1e13cdc26dd4494f9db63c59eff6, type: 2}
+  isFriendly: 1
